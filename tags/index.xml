@@ -6,9 +6,19 @@
     <description>Recent content in Tags on Z&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Sat, 11 May 2019 11:20:44 -0400</lastBuildDate>
     
 	<atom:link href="https://zian999.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>photography</title>
+      <link>https://zian999.github.io/tags/photography/</link>
+      <pubDate>Sat, 11 May 2019 11:20:44 -0400</pubDate>
+      
+      <guid>https://zian999.github.io/tags/photography/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>
