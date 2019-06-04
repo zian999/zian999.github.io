@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Z&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 30 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 04 Jun 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://zian999.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>photography</title>
+      <link>https://zian999.github.io/tags/photography/</link>
+      <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://zian999.github.io/tags/photography/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>gallery</title>
@@ -17,15 +26,6 @@
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zian999.github.io/tags/gallery/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>photography</title>
-      <link>https://zian999.github.io/tags/photography/</link>
-      <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://zian999.github.io/tags/photography/</guid>
       <description></description>
     </item>
     
