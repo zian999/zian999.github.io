@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>R on Z&#39;s blog</title>
+    <link>https://zian999.github.io/tags/r/</link>
+    <description>Recent content in R on Z&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://zian999.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Get p-values for the fixed effect terms in (g)lmer model</title>
+      <link>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
+      <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
+      
+      <guid>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
+      <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for fixed effect terms.
+If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model.</description>
+    </item>
+    
+  </channel>
+</rss>

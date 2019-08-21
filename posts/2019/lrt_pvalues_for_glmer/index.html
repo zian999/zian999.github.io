@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>Z&#39;s blog  | Get p-values for the fixed effect terms in (g)lmer model</title>
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.55.4" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Get p-values for the fixed effect terms in (g)lmer model" />
+<meta property="og:description" content="For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&rsquo;t provide p-values for fixed effect terms.
+If you use lme4::glmer, you&rsquo;ll find that there are p-values listed in the summary of the model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/" />
+<meta property="article:published_time" content="2019-08-21T19:29:00-04:00"/>
+<meta property="article:modified_time" content="2019-08-21T19:29:00-04:00"/>
+
+<meta itemprop="name" content="Get p-values for the fixed effect terms in (g)lmer model">
+<meta itemprop="description" content="For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&rsquo;t provide p-values for fixed effect terms.
+If you use lme4::glmer, you&rsquo;ll find that there are p-values listed in the summary of the model.">
+
+
+<meta itemprop="datePublished" content="2019-08-21T19:29:00-04:00" />
+<meta itemprop="dateModified" content="2019-08-21T19:29:00-04:00" />
+<meta itemprop="wordCount" content="2141">
+
+
+
+<meta itemprop="keywords" content="psychology,R," />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Get p-values for the fixed effect terms in (g)lmer model"/>
+<meta name="twitter:description" content="For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&rsquo;t provide p-values for fixed effect terms.
+If you use lme4::glmer, you&rsquo;ll find that there are p-values listed in the summary of the model."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="https://zian999.github.io/" class="f3 fw2 hover-white no-underline white-90 dib">
+      Z&#39;s blog
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+        <ul class="pl0 mr3">
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/about/" title="About page">
+              About
+            </a>
+          </li>
+          
+          <li class="list f5 f4-ns fw4 dib pr3">
+            <a class="hover-white no-underline white-90" href="/posts/" title="Posts page">
+              Posts
+            </a>
+          </li>
+          
+        </ul>
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Get p-values for the fixed effect terms in (g)lmer model</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-08-21T19:29:00-04:00">August 21, 2019</time>      
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>For some reason (see <a href="https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#why-doesnt-lme4-display-denominator-degrees-of-freedomp-values-what-other-options-do-i-have">GLMM faq</a> and <a href="https://stat.ethz.ch/pipermail/r-help/2006-May/094765.html">here</a> for more detail), the <code>lmer</code> function in the <code>lme4</code> package doesn&rsquo;t provide p-values for fixed effect terms.</p>
+
+<p>If you use <code>lme4::glmer</code>, you&rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are actually indicating the significance of the coefficients (i.e., whether the betas you got are different from 0 or not), not testing the effects. Thought if you only have two levels for each of your factors, the significance of the coefficients could be the used to check the significance of effects (I guess). Another problem with the p-values provided by <code>glmer</code> is that, they are results of Wald <em>Z</em>-test which is not a very good method (see <a href="https://bbolker.github.io/mixedmodels-misc/glmmFAQ.html#what-are-the-p-values-listed-by-summaryglmerfit-etc.-are-they-reliable">GLMM faq</a>). Essentially the likelihood ratio test (LRT) is always better than Wald test. See an example <a href="https://stats.stackexchange.com/questions/120768/different-p-values-for-fixed-effects-in-summary-of-glmer-and-likelihood-rati">here</a> to see that sometimes the Wald test p-values and LRT p-values can give you different significance.</p>
+
+<p>So, for me, who mainly deal with data collected from cognitive psychology experiments, a convenient way to calculate the p-values for the fixed effects in (g)lmer models is needed. (In our field, stats is more like a tool, we don&rsquo;t dive into it too much)</p>
+
+<p>Some suggest that I can use the <code>Anova</code> function in the <code>car</code> package. But the p-values it provides comes from Wald chi-square tests. If you are OK with the Wald test, they can be helpful. For lmer models, these p-values can be used since lmer doesn&rsquo;t provide p-values. For glmer models, the <code>car::Anova</code> can address the first problem listed above (i.e., give you the tests of the effects instead of the coefficients). Note that if each factors of your glmer model only has two levels, the <code>Anove</code> results (type III Wald chisquare test) is the same as the results of default Wald <em>Z</em>-test in the summary of your glmer model.</p>
+
+<p>Example (the example data is <a href="/datafiles/2019_LRT_pvalues_for_glmer/exampledata.csv">here</a>):</p>
+
+<pre><code>library(tidyverse)
+library(lme4)
+library(car)
+
+## read the data. 
+## DV = depedent variable
+## A, B, C = fixed effects factors
+## S, I, = random effects factors
+rtdata &lt;- read_csv(file.path(&quot;./exampledata.csv&quot;))
+## convert A, B, C, S, I to factors
+fctr_cols &lt;- colnames(rtdata)[-1]
+rtdata[fctr_cols] &lt;- lapply(rtdata[fctr_cols], as_factor)
+
+## fit an lmm and a glmm
+options(contrasts = c(&quot;contr.sum&quot;, &quot;contr.poly&quot;))
+lmm1 &lt;- lmer(DV ~ A * B * C + (1 | S) + (1 | I), rtdata)
+glmm1 &lt;- glmer(DV ~ A * B * C + (1 | S) + (1 | I), rtdata, 
+               family = Gamma(link=identity), 
+               control = glmerControl(optimizer=&quot;bobyqa&quot;))
+
+summary(lmm1)
+
+# Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
+# Formula: DV ~ A * B * C + (1 | S) + (1 | I)
+#    Data: rtdata
+# 
+# REML criterion at convergence: 46222.6
+# 
+# Scaled residuals:
+#     Min      1Q  Median      3Q     Max
+# -2.5634 -0.5519 -0.1915  0.2768  7.9204
+# 
+# Random effects:
+#  Groups   Name        Variance Std.Dev.
+#  I        (Intercept)  4639     68.11
+#  S        (Intercept)  9718     98.58
+#  Residual             30157    173.66
+# Number of obs: 3494, groups:  I, 118; S, 32
+# 
+# Fixed effects:
+#              Estimate Std. Error        df t value Pr(&gt;|t|)
+# (Intercept)  617.2975    18.7566   38.8504  32.911  &lt; 2e-16 ***
+# A1           -20.5304     2.9422 3332.3504  -6.978 3.60e-12 ***
+# B1           -12.8787     2.9507 3339.0146  -4.365 1.31e-05 ***
+# C1            -6.0019     6.9360  106.0503  -0.865  0.38882
+# A1:B1         -8.4169     2.9450 3334.3959  -2.858  0.00429 **
+# A1:C1          1.3357     2.9431 3332.5641   0.454  0.64997
+# B1:C1          2.8175     2.9479 3338.3614   0.956  0.33925
+# A1:B1:C1      -0.9589     2.9447 3334.3816  -0.326  0.74471
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Correlation of Fixed Effects:
+#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1
+# A1       -0.002
+# B1       -0.001  0.001
+# C1        0.002 -0.003  0.001
+# A1:B1     0.000 -0.009 -0.009  0.001
+# A1:C1    -0.001  0.012  0.002 -0.005  0.004
+# B1:C1     0.001  0.002  0.012 -0.003 -0.005  0.001
+# A1:B1:C1  0.000  0.004 -0.005  0.000  0.013 -0.009 -0.009
+
+
+summary(glmm1)
+
+# Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) ['glmerMod']
+#  Family: Gamma  ( identity )
+# Formula: DV ~ A * B * C + (1 | S) + (1 | I)
+#    Data: rtdata
+# Control: glmerControl(optimizer = &quot;bobyqa&quot;)
+# 
+#      AIC      BIC   logLik deviance df.resid 
+#  44518.0  44585.8 -22248.0  44496.0     3483 
+# 
+# Scaled residuals: 
+#     Min      1Q  Median      3Q     Max 
+# -1.6330 -0.5973 -0.2142  0.2849  9.3370 
+# 
+# Random effects:
+#  Groups   Name        Variance  Std.Dev.
+#  I        (Intercept) 2.542e+03 50.4143 
+#  S        (Intercept) 2.650e+03 51.4763 
+#  Residual             7.222e-02  0.2687 
+# Number of obs: 3494, groups:  I, 118; S, 32
+# 
+# Fixed effects:
+#             Estimate Std. Error t value Pr(&gt;|z|)    
+# (Intercept)  654.865      6.926  94.545  &lt; 2e-16 ***
+# A1           -21.591      2.196  -9.832  &lt; 2e-16 ***
+# B1           -13.413      2.225  -6.030 1.64e-09 ***
+# C1            -3.338      6.022  -0.554    0.579    
+# A1:B1        -10.278      2.208  -4.654 3.26e-06 ***
+# A1:C1          0.495      2.236   0.221    0.825    
+# B1:C1          2.688      2.214   1.214    0.225    
+# A1:B1:C1      -1.054      2.215  -0.476    0.634    
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+# 
+# Correlation of Fixed Effects:
+#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1 
+# A1        0.003                                          
+# B1       -0.019 -0.027                                   
+# C1        0.028  0.008 -0.013                            
+# A1:B1     0.006 -0.053 -0.083  0.014                     
+# A1:C1     0.002 -0.024  0.004 -0.026  0.018              
+# B1:C1    -0.042  0.007 -0.030 -0.032  0.010 -0.029       
+# A1:B1:C1  0.010  0.015  0.007 -0.004 -0.037 -0.070 -0.064
+</code></pre>
+
+<p>Call <code>car::Anova</code> on lmer model:</p>
+
+<pre><code>## in this example, I want to investigate the interaction, so use type=3
+car::Anova(lmm1, type=3)
+
+# Analysis of Deviance Table (Type III Wald chisquare tests)
+# 
+# Response: DV
+#                 Chisq Df Pr(&gt;Chisq)    
+# (Intercept) 1083.1362  1  &lt; 2.2e-16 ***
+# A             48.6906  1  2.997e-12 ***
+# B             19.0495  1  1.274e-05 ***
+# C              0.7488  1   0.386864    
+# A:B            8.1682  1   0.004263 ** 
+# A:C            0.2060  1   0.649944    
+# B:C            0.9135  1   0.339185    
+# A:B:C          0.1060  1   0.744694    
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</code></pre>
+
+<p>Call <code>car::Anova</code> on glmer model:</p>
+
+<pre><code>car::Anova(glmm1, type=3)
+
+# Analysis of Deviance Table (Type III Wald chisquare tests)
+# 
+# Response: DV
+#                 Chisq Df Pr(&gt;Chisq)    
+# (Intercept) 8938.7224  1  &lt; 2.2e-16 ***
+# A             96.6718  1  &lt; 2.2e-16 ***
+# B             36.3555  1  1.644e-09 ***
+# C              0.3072  1     0.5794    
+# A:B           21.6573  1  3.260e-06 ***
+# A:C            0.0490  1     0.8248    
+# B:C            1.4737  1     0.2248    
+# A:B:C          0.2264  1     0.6342    
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+## Note that the valus in column &quot;Pr(&gt;Chisq)&quot; here is the same as the 
+## column &quot;Pr(&gt;|z|)&quot; in the &quot;Fixed Effects&quot; part of &quot;summary(glmm1)&quot;
+</code></pre>
+
+<p>However, the Wald test is not very good. If you want to try better methods to test the fixed effects, you can learn to use packages like <code>lmerTest</code>, <code>KRmodcomp</code>, and <code>PBmodcomp</code>. Besides them, I found the package <code>afex</code> can be very useful. It sort of combines these packages and <code>lme4</code> together, and makes model fitting and p-values calculating easier. You can just use the <code>afex::mixed</code> function to fit the model and choose a method you want to obtain p-values. The default method &ldquo;KR&rdquo; (= Kenward-Roger) as well as method=&ldquo;S&rdquo; (Satterthwaite) support LMMs and the other methods (&ldquo;LRT&rdquo; = likelihood-ratio tests and &ldquo;PB&rdquo; = parametric bootstrap) support both LMMs (estimated via lmer) and GLMMs. For more detail, see the <a href="https://cran.r-project.org/web/packages/afex/afex.pdf">afex documentation</a>.</p>
+
+<p>One big problem I encountered when using <code>afex</code> is that, sometimes when fitting a very complex LMM or fitting a GLMM, the program gave me a lot of convergence warnings. Because I don&rsquo;t know any technique details of fitting (G)LMM or those R packages, I can only look for peoples&rsquo; instructions and answers online and follow them. But almost all of them are teaching me how to deal with the convergence problem for a (g)lmer model, not for a <code>afex::mixed</code> model. So I decide to stick with the <code>lme4</code> packge and learn to calculate the p-values on the newly fitted model after solving the convergence problem.</p>
+
+<p>In LRT, the full model and a restricted model are compared. The <a href="https://stackoverflow.com/questions/11335923/how-to-remove-a-lower-order-parameter-in-a-model-when-the-higher-order-parameter">question and answers here</a> show that you can&rsquo;t get a correct restricted model by <code>update(lm, .~.-FactorA)</code> if the model have interactions (<code>value ~ FactorA*FactorB</code>). I put the example here:</p>
+
+<pre><code>set.seed(101)
+d &lt;- data.frame(A = rep(c(&quot;a1&quot;, &quot;a2&quot;), each = 50), B = c(&quot;b1&quot;, &quot;b2&quot;), value = rnorm(100))
+options(contrasts=c('contr.sum','contr.poly'))
+m1 &lt;- lm(value ~ A * B, data = d)
+m1
+
+# Call:
+# lm(formula = value ~ A * B, data = d)
+#
+# Coefficients:
+# (Intercept)           A1           B1        A1:B1
+#    -0.03719     -0.08678      0.12290      0.04380
+
+m2 &lt;- update(m1, .~. - A)
+m2
+
+# Call:
+# lm(formula = value ~ B + A:B, data = d)
+#
+# Coefficients:
+# (Intercept)           B1       Bb1:A1       Bb2:A1
+#    -0.03719      0.12290     -0.04298     -0.13058
+</code></pre>
+
+<p>Look at the coefficients of m2, they are &ldquo;B1, Bb1:A1, Bb2:A1&rdquo;, not &ldquo;B1, A1:B1&rdquo;. According to the answers, the correct way of obtaining a restricted model should be involving manually creating a model matrix using the function <code>model.matrix</code>.</p>
+
+<p>Below is my example of conducting the LRT for all fixed effects of a (g)lmer model:</p>
+
+<pre><code>## Say we have a glmer model that gives us convergence warnings. Then we 
+## followed `?convergence` and finally fit a new model glmm1 that doesn't 
+## give warnings. So we want to use LRT to test glmm2's fixed effects.
+
+## create design matrix
+X &lt;- model.matrix(~ A * B * C, data = rtdata)
+
+## fit models dropping one effect at a time
+## change from 1:ncol(X) to 2:ncol(X)
+## to avoid a no intercept model
+mm &lt;- lapply(1:ncol(X), function(i) {
+  lmer(DV ~ 0 + X[, -i] + (1 | S) + (1 | I), data = rtdata)
+})
+full_model &lt;- lmer(DV ~ A * B * C + (1 | S) + (1 | I), data = rtdata)
+names(mm) &lt;- c(colnames(X))
+## mm stores 8 restricted models, each of them excludes one fixed 
+## effect which we want to test
+
+## use `anova` to test. For example test the effct of A:
+anova(full_model, mm$A1)
+
+# refitting model(s) with ML (instead of REML)
+# Data: rtdata
+# Models:
+# mm$A1: DV ~ 0 + X[, -i] + (1 | S) + (1 | I)
+# full_model: DV ~ A * B * C + (1 | S) + (1 | I)
+#            Df   AIC   BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)    
+# mm$A1      10 46328 46390 -23154    46308                             
+# full_model 11 46282 46350 -23130    46260 48.377      1  3.516e-12 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+</code></pre>
+
+<p>What if there&rsquo;s a factor that has more than 2 levels? Just exclude multiple columns that corresponds to the effect from the model matrix:</p>
+
+<pre><code>## generate some data, S = random effect factor, A and B = fixed effect factor, 
+## A has 3 levels. DV = dependent variable
+rtdata2 &lt;- data.frame(
+  S = factor(S &lt;- rep(seq_along(n &lt;- sample(3:8, 60, TRUE)), n)),
+  A = sample(c(&quot;a1&quot;, &quot;a2&quot;, &quot;a3&quot;), length(S), TRUE),
+  B = sample(c(&quot;b1&quot;, &quot;b2&quot;), length(S), TRUE),
+  DV = rnorm(length(S), 3) + rep(rnorm(length(n)), n))
+
+full_model2 &lt;- lmer(DV ~ A * B + (1 | S), rtdata2)
+
+## create design matrix
+X2 &lt;- model.matrix(~ A * B, data = rtdata2)
+## exclude the columns that contains &quot;A&quot;
+X2_A &lt;- X2[, !grepl(pattern = &quot;A[0-9]$&quot;, colnames(X2))]
+res_model_A &lt;- lmer(DV ~ 0 + X2_A + (1 | S), data = rtdata2)
+
+## test the effect of A
+anova(full_model2, res_model_A)
+
+# refitting model(s) with ML (instead of REML)
+# Data: rtdata2
+# Models:
+# res_model_A: DV ~ 0 + X2_A + (1 | S)
+# full_model2: DV ~ A * B + (1 | S)
+#             Df     AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
+# res_model_A  6  997.18 1019.8 -492.59   985.18                         
+# full_model2  8 1001.15 1031.3 -492.57   985.15 0.0324      2     0.9839
+
+## similarly, exclude all interaction terms containing &quot;A&quot; if we 
+## want to test the effect of interaction
+X2_AB &lt;- X2[, !grepl(pattern = &quot;A[0-9]:&quot;, colnames(X2))]
+res_model_AB &lt;- lmer(DV ~ 0 + X2_AB + (1 | S), data = rtdata2)
+anova(full_model2, res_model_AB)
+
+# refitting model(s) with ML (instead of REML)
+# Data: rtdata2
+# Models:
+# res_model_AB: DV ~ 0 + X2_AB + (1 | S)
+# full_model2: DV ~ A * B + (1 | S)
+#              Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)
+# res_model_AB  6 1000.9 1023.6 -494.46   988.92                         
+# full_model2   8 1001.1 1031.3 -492.57   985.15 3.7727      2     0.1516
+</code></pre>
+
+<h1 id="takehome">Takehome</h1>
+
+<p>The <code>lme4::lmer</code> function doesn&rsquo;t provide p-values for fixed effect terms. The <code>lme4::glmer</code> provides the p-values for coefficients, not for effects, using the Wald <em>Z</em>-test method.</p>
+
+<p>We can use the <code>car::Anove</code> or other packages (e.g., <code>lmerTest</code>, <code>KRmodcomp</code>, and <code>PBmodcomp</code>) to obtain p-values. For LRT, in which restricted models need to be fit, matrix models should be used to created the corrected restricted models.</p>
+<ul class="pa0">
+  
+   <li class="list">
+     <a href="/tags/psychology" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">psychology</a>
+   </li>
+  
+   <li class="list">
+     <a href="/tags/r" class="link f5 grow no-underline br-pill ba ph3 pv2 mb2 dib black sans-serif">R</a>
+   </li>
+  
+</ul>
+<div class="mt6">
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "tchkm6" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+  <div class="bg-light-gray pa3 nested-list-reset nested-copy-line-height nested-links">
+    <p class="f5 b mb3">Related</p>
+    <ul class="pa0 list">
+	   
+	     <li  class="mb2">
+          <a href="/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/">文字排列方向对汉字可读性的影响，90年前的心理学研究</a>
+        </li>
+	    
+    </ul>
+</div>
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="https://zian999.github.io/" >
+    &copy; 2019 Z&#39;s blog
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
