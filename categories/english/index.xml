@@ -39,19 +39,5 @@ If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in 
       <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&amp;rsquo;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
     </item>
     
-    <item>
-      <title>Markdown Guide (modified)</title>
-      <link>/posts/2018-08-30-markdown-guide/</link>
-      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2018-08-30-markdown-guide/</guid>
-      <description>An h1 header Paragraphs are separated by a blank line.
-2nd paragraph. Italic, bold, and monospace. Itemized lists look like:
- this one that one the other one  Note that &amp;mdash; not considering the asterisk &amp;mdash; the actual text content starts at 4-columns in.
- Block quotes are written like so.
-They can span multiple paragraphs, if you like.
- Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex.</description>
-    </item>
-    
   </channel>
 </rss>

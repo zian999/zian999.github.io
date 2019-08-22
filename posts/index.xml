@@ -22,7 +22,7 @@ If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in 
     </item>
     
     <item>
-      <title>文字排列方向对汉字可读性的影响，90年前的心理学研究</title>
+      <title>文字排列方向对汉字可读性的影响——90年前的心理学研究</title>
       <link>/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</link>
       <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
       
@@ -55,20 +55,6 @@ If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in 
       
       <guid>/posts/2019/buying_camera/</guid>
       <description>去年底计划去日本旅游一次，打算出发之前买台相机带去用。因为没能赶上京东双十一促销，所以斗胆去实体店里面买了，现在回头看自己真是太傻，实体店的水真的太深了。这里我想分享下这次购机的教训和经历，希望能多少帮助别人不掉进奸商的坑里。</description>
-    </item>
-    
-    <item>
-      <title>Markdown Guide (modified)</title>
-      <link>/posts/2018-08-30-markdown-guide/</link>
-      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2018-08-30-markdown-guide/</guid>
-      <description>An h1 header Paragraphs are separated by a blank line.
-2nd paragraph. Italic, bold, and monospace. Itemized lists look like:
- this one that one the other one  Note that &amp;mdash; not considering the asterisk &amp;mdash; the actual text content starts at 4-columns in.
- Block quotes are written like so.
-They can span multiple paragraphs, if you like.
- Use 3 dashes for an em-dash. Use 2 dashes for ranges (ex.</description>
     </item>
     
   </channel>
