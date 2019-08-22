@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Z&#39;s blog</title>
-    <link>https://zian999.github.io/posts/</link>
-    <description>Recent content in Posts on Z&#39;s blog</description>
+    <title>Posts on Nature and Human</title>
+    <link>zian999.github.io/posts/</link>
+    <description>Recent content in Posts on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
     
-	<atom:link href="https://zian999.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="zian999.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Get p-values for the fixed effect terms in (g)lmer model</title>
-      <link>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
+      <link>zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
-      <guid>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
+      <guid>zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
       <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for fixed effect terms.
-If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model.</description>
+If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are actually indicating the significance of the coefficients (i.e., whether the betas you got are different from 0 or not), not testing the effects.</description>
     </item>
     
     <item>
       <title>文字排列方向对汉字可读性的影响，90年前的心理学研究</title>
-      <link>https://zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</link>
+      <link>zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</link>
       <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</guid>
+      <guid>zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</guid>
       <description>偶然看到有人在论坛里讨论为什么日本还不放弃传统的文字竖排、全面使用横向排版。有的回答从历史文化传承角度出发考虑、有的从日文西文混排的角度考虑、还有的回答从排版印刷的角度考虑。值得注意的是，我发现许多人认为因为人眼是横着长的，所以肯定看横排文字比看竖排文字更高效。对于类似英语的文字，一个单词占用的空间很大，而且不同字母的高度不一，竖排阅读的效率低应该是可以预期的吧。但像中文、日文这种横竖排列都可以的文字书写系统，情况是如何的呢？稍经搜索，我就发现原来早在90多年前就有心理学家研究了这个问题。</description>
     </item>
     
     <item>
       <title>How to add a new lens profile to (ceased) Lightroom 6</title>
-      <link>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</link>
+      <link>zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</guid>
+      <guid>zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</guid>
       <description>The Lightroom 6 was killed by Adobe in 2017 and will never get updates any more. For people (like me) who don&amp;rsquo;t want to subscribe to Adobe&amp;rsquo;s plans and are sticking with LR6, I found a way to add new lens profiles to LR6.</description>
     </item>
     
     <item>
       <title>Birding in Point Pelee National Park</title>
-      <link>https://zian999.github.io/posts/2019/point_pelee_2019/</link>
+      <link>zian999.github.io/posts/2019/point_pelee_2019/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zian999.github.io/posts/2019/point_pelee_2019/</guid>
+      <guid>zian999.github.io/posts/2019/point_pelee_2019/</guid>
       <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&amp;rsquo;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
     </item>
     
     <item>
       <title>完败于奸商：购买单反相机的教训</title>
-      <link>https://zian999.github.io/posts/2019/buying_camera/</link>
+      <link>zian999.github.io/posts/2019/buying_camera/</link>
       <pubDate>Sat, 11 May 2019 11:20:44 -0400</pubDate>
       
-      <guid>https://zian999.github.io/posts/2019/buying_camera/</guid>
+      <guid>zian999.github.io/posts/2019/buying_camera/</guid>
       <description>去年底计划去日本旅游一次，打算出发之前买台相机带去用。因为没能赶上京东双十一促销，所以斗胆去实体店里面买了，现在回头看自己真是太傻，实体店的水真的太深了。这里我想分享下这次购机的教训和经历，希望能多少帮助别人不掉进奸商的坑里。</description>
     </item>
     

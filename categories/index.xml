@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Nature and Human</title>
+    <link>zian999.github.io/categories/</link>
+    <description>Recent content in Categories on Nature and Human</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
+    
+	<atom:link href="zian999.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>English</title>
+      <link>zian999.github.io/categories/english/</link>
+      <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
+      
+      <guid>zian999.github.io/categories/english/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>中文</title>
+      <link>zian999.github.io/categories/%E4%B8%AD%E6%96%87/</link>
+      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>zian999.github.io/categories/%E4%B8%AD%E6%96%87/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

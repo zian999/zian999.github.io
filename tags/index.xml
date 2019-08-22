@@ -1,49 +1,58 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Z&#39;s blog</title>
-    <link>https://zian999.github.io/tags/</link>
-    <description>Recent content in Tags on Z&#39;s blog</description>
+    <title>Tags on Nature and Human</title>
+    <link>zian999.github.io/tags/</link>
+    <description>Recent content in Tags on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
     
-	<atom:link href="https://zian999.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="zian999.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>R</title>
-      <link>https://zian999.github.io/tags/r/</link>
+      <link>zian999.github.io/tags/r/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
-      <guid>https://zian999.github.io/tags/r/</guid>
+      <guid>zian999.github.io/tags/r/</guid>
       <description></description>
     </item>
     
     <item>
       <title>psychology</title>
-      <link>https://zian999.github.io/tags/psychology/</link>
+      <link>zian999.github.io/tags/psychology/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
-      <guid>https://zian999.github.io/tags/psychology/</guid>
+      <guid>zian999.github.io/tags/psychology/</guid>
       <description></description>
     </item>
     
     <item>
       <title>photography</title>
-      <link>https://zian999.github.io/tags/photography/</link>
+      <link>zian999.github.io/tags/photography/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zian999.github.io/tags/photography/</guid>
+      <guid>zian999.github.io/tags/photography/</guid>
       <description></description>
     </item>
     
     <item>
       <title>gallery</title>
-      <link>https://zian999.github.io/tags/gallery/</link>
+      <link>zian999.github.io/tags/gallery/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://zian999.github.io/tags/gallery/</guid>
+      <guid>zian999.github.io/tags/gallery/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Theme Example</title>
+      <link>zian999.github.io/tags/theme-example/</link>
+      <pubDate>Thu, 30 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>zian999.github.io/tags/theme-example/</guid>
       <description></description>
     </item>
     
