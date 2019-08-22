@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>R on Nature and Human</title>
-    <link>zian999.github.io/tags/r/</link>
+    <link>/tags/r/</link>
     <description>Recent content in R on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
     
-	<atom:link href="zian999.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/r/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Get p-values for the fixed effect terms in (g)lmer model</title>
-      <link>zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
+      <link>/posts/2019/lrt_pvalues_for_glmer/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
-      <guid>zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
+      <guid>/posts/2019/lrt_pvalues_for_glmer/</guid>
       <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for fixed effect terms.
 If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are actually indicating the significance of the coefficients (i.e., whether the betas you got are different from 0 or not), not testing the effects.</description>
     </item>
