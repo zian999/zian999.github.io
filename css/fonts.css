@@ -21,7 +21,7 @@ html {
   sans-serif;
 }
 
-header {
+header, code, footer, .terms, .date, .taxonomy {
   font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
 }
 
@@ -38,15 +38,37 @@ header {
     sans-serif;
 }
 
-.terms, .date, .taxonomy {
-  font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
+.title {
+  font-size: 1.2em;
+  line-height: 1.1em;
 }
+
+.article-meta .date { font-size: 1.2em; }
+
+.terms { font-size: 0.9em; }
+
+code, footer { font-size: 90%; }
 
 .author {
-  font-family: Georgia, "Nimbus Roman No9 L", "Songti SC", "Noto Serif CJK SC", "Source Han Serif SC", "Source Han Serif CN", STSong, "AR PL New Sung", "AR PL SungtiL GB", NSimSun, SimSun, "TW\-Sung", "WenQuanYi Bitmap Song", "AR PL UMing CN", "AR PL UMing HK", "AR PL UMing TW", "AR PL UMing TW MBE", PMingLiU, MingLiU, serif;
-}
-
-code, footer {
-  font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
-  font-size: 90%;
+  font-family: 
+  Georgia, 
+  "Nimbus Roman No9 L", 
+  "Songti SC", 
+  "Noto Serif CJK SC", 
+  "Source Han Serif SC", 
+  "Source Han Serif CN", 
+  STSong, 
+  "AR PL New Sung", 
+  "AR PL SungtiL GB", 
+  NSimSun, 
+  SimSun, 
+  "TW\-Sung", 
+  "WenQuanYi Bitmap Song", 
+  "AR PL UMing CN", 
+  "AR PL UMing HK", 
+  "AR PL UMing TW", 
+  "AR PL UMing TW MBE", 
+  PMingLiU, 
+  MingLiU, 
+  serif;
 }

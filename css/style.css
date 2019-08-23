@@ -16,7 +16,7 @@ output:
     */
 
 #TableOfContents, #TOC {
-  border: 1px solid #eee;
+  border: 2px solid #eee;
   border-radius: 5px;
 }
 
@@ -32,20 +32,6 @@ output:
   border-radius: 5px;
   box-shadow: 5px 5px 5px #bbbbbb;
 }
-
-.title {
-  font-size: 1.2em;
-  line-height: 1.1em;
-}
-
-.date {
-  font-size: 1.2em;
-}
-
-.terms {
-  font-size: 0.9em;
-}
-
 
 a {
   color: #2e86de;
