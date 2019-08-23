@@ -1,8 +1,3 @@
-footer {
-  font-size: 90%;
-  font-family: "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
-}
-
 body {
   max-width: 800px;
   margin: auto;
@@ -27,33 +22,13 @@ output:
 
 /* Header and Footer */
 .menu li { display: inline-block; }
+
 .article-meta {
-  font-family: 
-    "Georgia", 
-    "Nimbus Roman No9 L", 
-    "Songti SC", 
-    "Noto Serif CJK SC", 
-    "Source Han Serif SC", 
-    "Source Han Serif CN", 
-    STSong, 
-    "AR PL New Sung", 
-    "AR PL SungtiL GB", 
-    NSimSun, 
-    SimSun, 
-    "TW\-Sung", 
-    "WenQuanYi Bitmap Song", 
-    "AR PL UMing CN", 
-    "AR PL UMing HK", 
-    "AR PL UMing TW", 
-    "AR PL UMing TW MBE", 
-    PMingLiU, 
-    MingLiU, 
-    serif;
   text-decoration: none;
   background: #576574;
   color: #f1f2f6;
   opacity: 0.9;
-  padding: 5px 20px 5px;
+  padding: 5px 30px 5px;
   border-radius: 5px;
   box-shadow: 5px 5px 5px #bbbbbb;
 }
@@ -64,9 +39,9 @@ output:
 }
 .terms {
   font-size: .9em;
-  font-family: "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
   padding-top: 5px;
 }
+
 
 a {
   color: #2e86de;
@@ -103,7 +78,6 @@ header {
     position: relative;
     width: 100%;
     height: 1.75rem;
-    font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
     font-size: .875rem;
     background: #576574;
     border-bottom: 1px solid #000;
@@ -162,6 +136,10 @@ table {
 table thead th { border-bottom: 1px solid #ddd; }
 th, td { padding: 5px; }
 tr:nth-child(even) { background: #eee }
+
+.taxonomy {
+  
+}
 
 
 /* @import url('https://raw.githubusercontent.com/sofish/typo.css/master/typo.css'); */

@@ -5,6 +5,7 @@ html {
   Helvetica, 
   "Nimbus Sans L", 
   Arial, 
+  "Noto Sans", 
   "Liberation Sans", 
   "PingFang SC", 
   "Hiragino Sans GB", 
@@ -14,13 +15,34 @@ html {
   "Microsoft YaHei", 
   "Wenquanyi Micro Hei", 
   "WenQuanYi Zen Hei", 
-  "ST Heiti", SimHei, 
+  "ST Heiti", 
+  SimHei, 
   "WenQuanYi Zen Hei Sharp", 
   sans-serif;
 }
 
-code {
+header {
+  font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
+}
+
+.article-meta {
+  font-family: 
+    "Helvetica Neue", 
+    Helvetica, 
+    Arial, 
+    "PingFang SC", 
+    "Hiragino Sans GB", 
+    "Heiti SC", 
+    "Microsoft YaHei", 
+    "WenQuanYi Micro Hei", 
+    sans-serif;
+}
+
+.terms, .date, .taxonomy {
+  font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
+}
+
+code, footer {
   font-family: "Consolas", "Lucida Console" , "Liberation Mono", "Monaco", "Menlo", monospace;
   font-size: 90%;
 }
-
