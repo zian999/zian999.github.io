@@ -1,2 +1,3 @@
 User-agent: *
 Disallow: 
+Sitemap: https://zian999.github.io/sitemap.xml
