@@ -18,7 +18,7 @@
       
       <guid>/posts/2019/lrt_pvalues_for_glmer/</guid>
       <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
-If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are actually indicating the significance of the coefficients, not testing the effects.</description>
+If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
     </item>
     
     <item>
