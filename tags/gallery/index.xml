@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gallery on Nature and Human</title>
-    <link>/tags/gallery/</link>
+    <link>https://zian999.github.io/tags/gallery/</link>
     <description>Recent content in gallery on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 30 May 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/tags/gallery/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zian999.github.io/tags/gallery/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Birding in Point Pelee National Park</title>
-      <link>/posts/2019/point_pelee_2019/</link>
+      <link>https://zian999.github.io/posts/2019/point_pelee_2019/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/2019/point_pelee_2019/</guid>
+      <guid>https://zian999.github.io/posts/2019/point_pelee_2019/</guid>
       <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&amp;rsquo;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
     </item>
     

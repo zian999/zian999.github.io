@@ -2,40 +2,40 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>English on Nature and Human</title>
-    <link>/categories/english/</link>
+    <link>https://zian999.github.io/categories/english/</link>
     <description>Recent content in English on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
     
-	<atom:link href="/categories/english/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://zian999.github.io/categories/english/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Get p-values for the fixed effect terms in (g)lmer models</title>
-      <link>/posts/2019/lrt_pvalues_for_glmer/</link>
+      <link>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
-      <guid>/posts/2019/lrt_pvalues_for_glmer/</guid>
+      <guid>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
       <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
 If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
     </item>
     
     <item>
       <title>How to add a new lens profile to (ceased) Lightroom 6</title>
-      <link>/posts/2019/add_new_lens_profile_to_lr6/</link>
+      <link>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</link>
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/2019/add_new_lens_profile_to_lr6/</guid>
+      <guid>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</guid>
       <description>The Lightroom 6 was killed by Adobe in 2017 and will never get updates any more. For people (like me) who don&amp;rsquo;t want to subscribe to Adobe&amp;rsquo;s plans and are sticking with LR6, I found a way to add new lens profiles to LR6.</description>
     </item>
     
     <item>
       <title>Birding in Point Pelee National Park</title>
-      <link>/posts/2019/point_pelee_2019/</link>
+      <link>https://zian999.github.io/posts/2019/point_pelee_2019/</link>
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
-      <guid>/posts/2019/point_pelee_2019/</guid>
+      <guid>https://zian999.github.io/posts/2019/point_pelee_2019/</guid>
       <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&amp;rsquo;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
     </item>
     
