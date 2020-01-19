@@ -21,14 +21,5 @@
 If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
     </item>
     
-    <item>
-      <title>文字排列方向对汉字可读性的影响——90年前的心理学研究</title>
-      <link>https://zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</link>
-      <pubDate>Tue, 25 Jun 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://zian999.github.io/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</guid>
-      <description>偶然看到有人在论坛里讨论为什么日本还不放弃传统的文字竖排、全面使用横向排版。有的回答从历史文化传承角度出发考虑、有的从日文西文混排的角度考虑、还有的回答从排版印刷的角度考虑。值得注意的是，我发现许多人认为因为人眼是横着长的，所以肯定看横排文字比看竖排文字更高效。对于类似英语的文字，一个单词占用的空间很大，而且不同字母的高度不一，竖排阅读的效率低应该是可以预期的吧。但像中文、日文这种横竖排列都可以的文字书写系统，情况是如何的呢？稍经搜索，我就发现原来早在90多年前就有心理学家研究了这个问题。</description>
-    </item>
-    
   </channel>
 </rss>
