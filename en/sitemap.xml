@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
@@ -38,31 +38,8 @@
   </url>
   
   <url>
-    <loc>https://zian999.github.io/tags/r/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://zian999.github.io/tags/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
-    <priority>0</priority>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zian999.github.io/zh/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zian999.github.io/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://zian999.github.io/tags/psychology/</loc>
     <lastmod>2019-08-21T19:29:00-04:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -76,6 +53,26 @@
   </url>
   
   <url>
+    <loc>https://zian999.github.io/tags/r/</loc>
+    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/tags/</loc>
+    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zian999.github.io/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zian999.github.io/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
   </url>
@@ -83,7 +80,6 @@
   <url>
     <loc>https://zian999.github.io/tags/photography/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <priority>0</priority>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -104,7 +100,6 @@
   <url>
     <loc>https://zian999.github.io/tags/gallery/</loc>
     <lastmod>2019-05-30T00:00:00+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
