@@ -24,6 +24,7 @@
     <script src="/css/highlightjs/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
+  
     <header>
       <nav>
         <ul>
@@ -79,14 +80,18 @@
 <p>However, I am planning to buy a new Tamron wide angle lens which is not supported by LR6 (final version 6.13). It means that the lens correction feature is not usable for that lens (and any new lens released after LR6). One solution is to make the lens profile myself using the <a href="https://helpx.adobe.com/photoshop/digital-negative.html#Adobe_Lens_Profile_Creator">Adobe Lens Profile Creator</a>. By the way, there seemed to be an Adobe Lens Profile Downloader, but was also killed by Adobe. Their note writes: As of 1/1/2018, the Adobe Lens Profile Downloader is no longer developed and is unavailable for download. Adobe's development team adds new lens profiles every release.</p>
 <p>Luckily, there's an easier method that allows me to add new lens profiles to the old LR6. According to one answer to <a href="https://forums.adobe.com/thread/2518319">this question in Adobe forum</a>, after installing the DNG converter there's a folder that stores all the lensprofiles. On windows, the location is (e.g.,)</p>
 <pre><code>C:\ProgramData\Adobe\CameraRaw\LensProfiles\1.0\Sigma\Sigma
-</code></pre><p>By copying the lensprofile (a <code>.lcp</code> file) I need to the user folder</p>
+</code></pre>
+<p>By copying the lensprofile (a <code>.lcp</code> file) I need to the user folder</p>
 <pre><code>C:\Users\**username**\AppData\Roaming\Adobe\CameraRaw\LensProfiles\1.0\Downloaded
-</code></pre><p>I can use that lensprofile in old version LR.</p>
+</code></pre>
+<p>I can use that lensprofile in old version LR.</p>
 <p>For Mac users, this will work too but the locations are different from Windows. According to the answer of <a href="https://forums.adobe.com/thread/2388427">this quesion in Adobe forum</a>, Mac users need to copy <code>.lcp</code> file(s) from (e.g.,)</p>
 <pre><code>/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0/Pentax/[profile you wish to use].lcp
-</code></pre><p>to the user folder</p>
+</code></pre>
+<p>to the user folder</p>
 <pre><code>/Users/[your user name]/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0
 </code></pre>
+
 </main>
 
 <br/><hr/>

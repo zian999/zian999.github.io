@@ -24,6 +24,7 @@
     <script src="/css/highlightjs/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
+  
     <header>
       <nav>
         <ul>
@@ -90,7 +91,8 @@
 <h2 id="添加子模块">添加子模块</h2>
 <p>此文中统一将远程项目<code>https://github.com/maonx/vimwiki-assets.git</code>克隆到本地<code>assets</code>文件夹。</p>
 <pre><code>$ git submodule add https://github.com/maonx/vimwiki-assets.git assets
-</code></pre><p>添加子模块后运行<code>git status</code>, 可以看到目录有增加1个文件<code>.gitmodules</code>, 这个文件用来保存子模块的信息。</p>
+</code></pre>
+<p>添加子模块后运行<code>git status</code>, 可以看到目录有增加1个文件<code>.gitmodules</code>, 这个文件用来保存子模块的信息。</p>
 <pre><code>$ git status
 On branch master
 
@@ -101,37 +103,44 @@ Changes to be committed:
 
     new file:   .gitmodules
     new file:   assets
-</code></pre><h2 id="查看子模块">查看子模块</h2>
+</code></pre>
+<h2 id="查看子模块">查看子模块</h2>
 <pre><code>$ git submodule
  e33f854d3f51f5ebd771a68da05ad0371a3c0570 assets (heads/master)
-</code></pre><h2 id="更新子模块">更新子模块</h2>
+</code></pre>
+<h2 id="更新子模块">更新子模块</h2>
 <ol>
 <li>更新项目内子模块到最新版本</li>
 </ol>
 <pre><code>$ git submodule update
-</code></pre><ol start="2">
+</code></pre>
+<ol start="2">
 <li>更新子模块为远程项目的最新版本</li>
 </ol>
 <pre><code>$ git submodule update --remote
-</code></pre><h2 id="克隆包含子模块的项目">克隆包含子模块的项目</h2>
+</code></pre>
+<h2 id="克隆包含子模块的项目">克隆包含子模块的项目</h2>
 <p>克隆包含子模块的项目有二种方法：一种是先克隆父项目，再更新子模块；另一种是直接递归克隆整个项目。</p>
 <h3 id="克隆父项目再更新子模块">克隆父项目，再更新子模块</h3>
 <ol>
 <li>克隆父项目</li>
 </ol>
 <pre><code>$ git clone https://github.com/maonx/vimwiki-assets.git assets
-</code></pre><ol start="2">
+</code></pre>
+<ol start="2">
 <li>查看子模块</li>
 </ol>
 <pre><code>$ git submodule
  -e33f854d3f51f5ebd771a68da05ad0371a3c0570 assets
-</code></pre><p>子模块前面有一个-，说明子模块文件还未检入（空文件夹）。</p>
+</code></pre>
+<p>子模块前面有一个-，说明子模块文件还未检入（空文件夹）。</p>
 <ol start="3">
 <li>初始化子模块</li>
 </ol>
 <pre><code>$ git submodule init
 Submodule 'assets' (https://github.com/maonx/vimwiki-assets.git) registered for path 'assets'
-</code></pre><p>初始化模块只需在克隆父项目后运行一次。</p>
+</code></pre>
+<p>初始化模块只需在克隆父项目后运行一次。</p>
 <ol start="4">
 <li>更新子模块</li>
 </ol>
@@ -144,15 +153,18 @@ Receiving objects: 100% (151/151), 1.34 MiB | 569.00 KiB/s, done.
 Resolving deltas: 100% (36/36), done.
 Checking connectivity... done.
 Submodule path 'assets': checked out 'e33f854d3f51f5ebd771a68da05ad0371a3c0570'
-</code></pre><h3 id="递归克隆整个项目">递归克隆整个项目</h3>
+</code></pre>
+<h3 id="递归克隆整个项目">递归克隆整个项目</h3>
 <pre><code>git clone https://github.com/maonx/vimwiki-assets.git assets --recursive 
-</code></pre><p>递归克隆整个项目，子模块已经同时更新了，一步到位。</p>
+</code></pre>
+<p>递归克隆整个项目，子模块已经同时更新了，一步到位。</p>
 <h2 id="修改子模块">修改子模块</h2>
 <p>在子模块中修改文件后，直接提交到远程项目分支。</p>
 <pre><code>$ git add .
 $ git ci -m &quot;commit&quot;
 $ git push origin HEAD:master
-</code></pre><h2 id="删除子模块">删除子模块</h2>
+</code></pre>
+<h2 id="删除子模块">删除子模块</h2>
 <p>删除子模块比较麻烦，需要手动删除相关的文件，否则在添加子模块时有可能出现错误</p>
 <p>同样以删除assets文件夹为例</p>
 <ol>
@@ -160,22 +172,26 @@ $ git push origin HEAD:master
 </ol>
 <pre><code>$ git rm --cached assets
 $ rm -rf assets
-</code></pre><ol start="2">
+</code></pre>
+<ol start="2">
 <li>删除.gitmodules文件中相关子模块信息</li>
 </ol>
 <pre><code>[submodule &quot;assets&quot;]
   path = assets
   url = https://github.com/maonx/vimwiki-assets.git
-</code></pre><ol start="3">
+</code></pre>
+<ol start="3">
 <li>删除.git/config中的相关子模块信息</li>
 </ol>
 <pre><code>[submodule &quot;assets&quot;]
   url = https://github.com/maonx/vimwiki-assets.git
-</code></pre><ol start="4">
+</code></pre>
+<ol start="4">
 <li>删除.git文件夹中的相关子模块文件</li>
 </ol>
 <pre><code>$ rm -rf .git/modules/assets
-</code></pre><h1 id="submodule-detached-head">submodule detached HEAD</h1>
+</code></pre>
+<h1 id="submodule-detached-head">submodule detached HEAD</h1>
 <p>来源：<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">StackOverflow问答</a></p>
 <p>If your submodule has been detached already, fix the detached state before you do an update with the above commands. cd into the submodule, checkout the submodule to a specific branch with, <code>git checkout master</code>. – Simba Sep 4 &lsquo;19 at 7:28</p>
 <p>Or - if this is too much of a hassle for multiple (recursive) submodules - simply do <code>git submodule foreach --recursive git checkout master</code>. – stefanct</p>

@@ -24,6 +24,7 @@
     <script src="/css/highlightjs/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
+  
     <header>
       <nav>
         <ul>
@@ -75,17 +76,22 @@
 
 <br/><nav id="TableOfContents">
   <ul>
-    <li><a href="#生成sshkey">生成sshkey</a>
+    <li><a href="#github-ssh-key生成免密登录服务器方法">Github ssh key生成，免密登录服务器方法</a>
       <ul>
-        <li><a href="#我的补充">我的补充</a></li>
+        <li><a href="#生成sshkey">生成sshkey</a>
+          <ul>
+            <li><a href="#我的补充">我的补充</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#配置项说明">配置项说明</a>
+    <li><a href="#ssh-config-那些你所知道和不知道的事">SSH Config 那些你所知道和不知道的事</a>
       <ul>
-        <li><a href="#我的补充-1">我的补充</a></li>
+        <li><a href="#配置项说明">配置项说明</a>
+          <ul>
+            <li><a href="#我的补充-1">我的补充</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -102,18 +108,22 @@
 <p>链接：https://deepzz.com/post/github-generate-ssh-key.html</p>
 <h2 id="生成sshkey">生成sshkey</h2>
 <p>1、查看是否存在ssh key，如果有会列出key的列表</p>
-<pre><code>$ ls -al ~/.ssh
+<pre><code class="language-bash">$ ls -al ~/.ssh
 # Lists the files in your .ssh directory, if they exist
-</code></pre><p>2、没有，继续创建，下一步</p>
-<pre><code>$ ssh-keygen -t ecdsa -b 256 -C &quot;your_email@example.com&quot;
+</code></pre>
+<p>2、没有，继续创建，下一步</p>
+<pre><code class="language-bash">$ ssh-keygen -t ecdsa -b 256 -C &quot;your_email@example.com&quot;
 Generating public/private ecdsa key pair.
-</code></pre><p>3、使用默认配置，点击Enter，继续</p>
-<pre><code>Enter file in which to save the key (/Users/you/.ssh/id_ecdsa): [Press enter]
-</code></pre><p>4、输入密码，可以为空，Enter。(如果有密码，以后每次使用到该key都会要求输入密码)</p>
-<pre><code>Enter passphrase (empty for no passphrase): [Type a passphrase]
+</code></pre>
+<p>3、使用默认配置，点击Enter，继续</p>
+<pre><code class="language-bash">Enter file in which to save the key (/Users/you/.ssh/id_ecdsa): [Press enter]
+</code></pre>
+<p>4、输入密码，可以为空，Enter。(如果有密码，以后每次使用到该key都会要求输入密码)</p>
+<pre><code class="language-bash">Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
-</code></pre><p>5、到这里，ssh key 创建完成</p>
-<pre><code>Your identification has been saved in /Users/you/.ssh/id_ecdsa.
+</code></pre>
+<p>5、到这里，ssh key 创建完成</p>
+<pre><code class="language-bash">Your identification has been saved in /Users/you/.ssh/id_ecdsa.
 Your public key has been saved in /Users/you/.ssh/id_ecdsa.pub.
 The key fingerprint is:
 SHA256:VSGP++8s1yT9lpTRc12O+6+pxoqa5qeIB/D85nKnMjE your_email@example.com
@@ -129,13 +139,16 @@ The key's randomart image is:
 |    o.*.o . =o.o=|
 |    ooooBo ..=*oo|
 +----[SHA256]-----+
-</code></pre><p>6、添加到ssh-agent。首先确定ssh-agent is enabled:</p>
-<pre><code># start the ssh-agent in the background
+</code></pre>
+<p>6、添加到ssh-agent。首先确定ssh-agent is enabled:</p>
+<pre><code class="language-bash"># start the ssh-agent in the background
 $ eval &quot;$(ssh-agent -s)&quot;
 Agent pid 59566
-</code></pre><p>7、添加</p>
-<pre><code>$ ssh-add ~/.ssh/id_ecdsa
-</code></pre><p>8、说明 id_ecdsa是私钥，id_ecdsa.pub是公钥。私钥是不能外泄的，我们需要用到的是公钥。 读取到公钥的内容，你就可以在github添加key了。</p>
+</code></pre>
+<p>7、添加</p>
+<pre><code class="language-bash">$ ssh-add ~/.ssh/id_ecdsa
+</code></pre>
+<p>8、说明 id_ecdsa是私钥，id_ecdsa.pub是公钥。私钥是不能外泄的，我们需要用到的是公钥。 读取到公钥的内容，你就可以在github添加key了。</p>
 <h3 id="我的补充">我的补充</h3>
 <p>在上面的第四步中，一般还是推荐要设置passphrase。这样虽然在之后的使用中每次连接都会要求输入passphrase，但是安全更有保障，不用太担心万一私钥丢失被别人随意使用。如果使用的是macOS，可以通过配置SSH的config文件将passphrase存储到自己的Keychain里。具体方法见后面一篇文章的我的补充。</p>
 <h1 id="ssh-config-那些你所知道和不知道的事">SSH Config 那些你所知道和不知道的事</h1>
@@ -144,25 +157,28 @@ Agent pid 59566
 <p>SSH（Secure Shell）是什么？是一项创建在应用层和传输层基础上的安全协议，为计算机上的 Shell（壳层）提供安全的传输和使用环境。也是专为远程登录会话和其他网络服务提供安全性的协议。它能够有效防止远程管理过程中的信息泄露问题。通过 SSH 可以对所有传输的数据进行加密，也能够防止 DNS 欺骗和 IP 欺骗。</p>
 <p>具体生成SSH Key方式请参考：<a href="https://deepzz.com/post/github-generate-ssh-key.html">Github ssh key生成，免密登录服务器方法</a>。这里以<code>id_ecdsa</code>（私钥） 和<code>id_ecdsa.pub</code>（公钥） 为例。</p>
 <p>本篇文章主要介绍 SSH 相关的使用技巧。通过对<code>~/.ssh/config</code>文件的配置你可以大大简化 SSH 相关的操作，如：</p>
-<pre><code>Host example                       # 关键词
+<pre><code class="language-bash">Host example                       # 关键词
     HostName example.com           # 主机地址
     User root                      # 用户名
     # IdentityFile ~/.ssh/id_ecdsa # 认证文件
     # Port 22                      # 指定端口
-</code></pre><p>通过执行<code>$ ssh example</code>我就可以登录我的服务器。而不需要敲更多的命令<code>$ ssh root@example.com</code>。又如我们想要向服务器传文件<code>$ scp a.txt example:/home/user_name</code>。比以前方便多了。</p>
+</code></pre>
+<p>通过执行<code>$ ssh example</code>我就可以登录我的服务器。而不需要敲更多的命令<code>$ ssh root@example.com</code>。又如我们想要向服务器传文件<code>$ scp a.txt example:/home/user_name</code>。比以前方便多了。</p>
 <p>更过相关帮助文档请参考<code>$ man ssh_config 5</code>。</p>
 <h2 id="配置项说明">配置项说明</h2>
 <p>SSH 的配置文件有两个：</p>
-<pre><code>$ ~/.ssh/config            # 用户配置文件
+<pre><code class="language-bash">$ ~/.ssh/config            # 用户配置文件
 $ /etc/ssh/ssh_config      # 系统配置文件
-</code></pre><p>下面来看看常用的配置参数。</p>
+</code></pre>
+<p>下面来看看常用的配置参数。</p>
 <p><strong>Host</strong></p>
 <p>用于我们执行 SSH 命令的时候如何匹配到该配置。</p>
-<pre><code>`*`，匹配所有主机名。
-`*.example.com`，匹配以 .example.com 结尾。
-`!*.dialup.example.com,*.example.com`，以 ! 开头是排除的意思。
-`192.168.0.?`，匹配 192.168.0.[0-9] 的 IP。
-</code></pre>
+<ul>
+<li><code>*</code>，匹配所有主机名。</li>
+<li><code>*.example.com</code>，匹配以 .example.com 结尾。</li>
+<li><code>!*.dialup.example.com,*.example.com</code>，以 ! 开头是排除的意思。</li>
+<li><code>192.168.0.?</code>，匹配 192.168.0.[0-9] 的 IP。</li>
+</ul>
 <p><strong>AddKeysToAgent</strong></p>
 <p>是否自动将 key 加入到 <code>ssh-agent</code>，值可以为 no(default)/confirm/ask/yes。</p>
 <p>如果是 yes，key 和密码都将读取文件并以加入到 agent ，就像 ssh-add。其他分别是询问、确认、不加入的意思。添加到 ssh-agent 意味着将私钥和密码交给它管理，让它来进行身份认证。</p>

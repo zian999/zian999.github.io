@@ -128,8 +128,6 @@ header .current a {
 }
 
 /* Code Boxes */
-pre {
-}
 code { 
   border-radius: 4px;
   background: #f9f2f4;
@@ -137,11 +135,14 @@ code {
   margin: 1px;
   color: #c7254e;
 }
+
+/* to be used with highlightjs */
 pre code {
   border: 2px solid #576574;
   overflow-x: auto;
   line-height: 1.1em;
 }
+
 
 /* Images, tables, misc. */
 img, iframe, video { max-width: 100%; }
@@ -165,5 +166,12 @@ tr:nth-child(even) { background: #eee }
   
 }
 
-
 /* @import url('https://raw.githubusercontent.com/sofish/typo.css/master/typo.css'); */
+
+main h1 {
+    line-height: 2em
+}
+
+body h1 {
+    line-height: 1.5em
+}
