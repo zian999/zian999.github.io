@@ -74,6 +74,28 @@
 </div>
 
 
+<br/><nav id="TableOfContents">
+  <ul>
+    <li><a href="#git-submodule-子模块的管理和使用">Git submodule 子模块的管理和使用</a>
+      <ul>
+        <li><a href="#使用前提">使用前提</a></li>
+        <li><a href="#添加子模块">添加子模块</a></li>
+        <li><a href="#查看子模块">查看子模块</a></li>
+        <li><a href="#更新子模块">更新子模块</a></li>
+        <li><a href="#克隆包含子模块的项目">克隆包含子模块的项目</a>
+          <ul>
+            <li><a href="#克隆父项目再更新子模块">克隆父项目，再更新子模块</a></li>
+            <li><a href="#递归克隆整个项目">递归克隆整个项目</a></li>
+          </ul>
+        </li>
+        <li><a href="#修改子模块">修改子模块</a></li>
+        <li><a href="#删除子模块">删除子模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#解决submodule-detached-head问题">解决submodule detached HEAD问题</a></li>
+  </ul>
+</nav><br/>
+
 
 <main>
 <p>我在使用Hugo的过程中发现要和git的子模块打不少交到，一是Hugo的主题都是子模块，再就是如果要把网站放在Github Pages上面，需要将public文件夹部署变为子模块。</p>
@@ -191,7 +213,7 @@ $ rm -rf assets
 </ol>
 <pre><code>$ rm -rf .git/modules/assets
 </code></pre>
-<h1 id="submodule-detached-head">submodule detached HEAD</h1>
+<h1 id="解决submodule-detached-head问题">解决submodule detached HEAD问题</h1>
 <p>来源：<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">StackOverflow问答</a></p>
 <p>If your submodule has been detached already, fix the detached state before you do an update with the above commands. cd into the submodule, checkout the submodule to a specific branch with, <code>git checkout master</code>. – Simba Sep 4 &lsquo;19 at 7:28</p>
 <p>Or - if this is too much of a hassle for multiple (recursive) submodules - simply do <code>git submodule foreach --recursive git checkout master</code>. – stefanct</p>

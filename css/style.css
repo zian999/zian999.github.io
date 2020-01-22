@@ -1,8 +1,16 @@
 body {
   max-width: 800px;
   margin: auto;
-  padding: .2em;
+  padding: auto;
   line-height: 1.5em;
+}
+
+main h1 {
+    line-height: 2em
+}
+
+body h1 {
+    line-height: 1.5em
 }
 
 /* Table of Contents, if wanted
@@ -167,11 +175,3 @@ tr:nth-child(even) { background: #eee }
 }
 
 /* @import url('https://raw.githubusercontent.com/sofish/typo.css/master/typo.css'); */
-
-main h1 {
-    line-height: 2em
-}
-
-body h1 {
-    line-height: 1.5em
-}
