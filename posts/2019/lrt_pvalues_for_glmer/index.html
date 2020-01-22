@@ -84,16 +84,16 @@
 <span style="color:#a6e22e">library</span>(lme4)
 <span style="color:#a6e22e">library</span>(car)
 
-<span style="color:#75715e">## read the data. </span>
-<span style="color:#75715e">## DV = depedent variable</span>
-<span style="color:#75715e">## A, B, C = fixed effects factors</span>
-<span style="color:#75715e">## S, I, = random effects factors</span>
+<span style="color:#75715e">## read the data. </span>
+<span style="color:#75715e">## DV = depedent variable</span>
+<span style="color:#75715e">## A, B, C = fixed effects factors</span>
+<span style="color:#75715e">## S, I, = random effects factors</span>
 rtdata <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">read_csv</span>(<span style="color:#a6e22e">file.path</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">./exampledata.csv&#34;</span>))
-<span style="color:#75715e">## convert A, B, C, S, I to factors</span>
+<span style="color:#75715e">## convert A, B, C, S, I to factors</span>
 fctr_cols <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">colnames</span>(rtdata)[<span style="color:#ae81ff">-1</span>]
 rtdata[fctr_cols] <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lapply</span>(rtdata[fctr_cols], as_factor)
 
-<span style="color:#75715e">## fit an lmm and a glmm</span>
+<span style="color:#75715e">## fit an lmm and a glmm</span>
 <span style="color:#a6e22e">options</span>(contrasts <span style="color:#f92672">=</span> <span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">contr.sum&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">contr.poly&#34;</span>))
 lmm1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B <span style="color:#f92672">*</span> C <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> I), rtdata)
 glmm1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glmer</span>(DV <span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B <span style="color:#f92672">*</span> C <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> I), rtdata, 
@@ -102,127 +102,127 @@ glmm1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">glmer
 
 <span style="color:#a6e22e">summary</span>(lmm1)
 
-<span style="color:#75715e"># Linear mixed model fit by REML [&#39;lmerMod&#39;]</span>
-<span style="color:#75715e"># Formula: DV ~ A * B * C + (1 | S) + (1 | I)</span>
-<span style="color:#75715e">#    Data: rtdata</span>
+<span style="color:#75715e"># Linear mixed model fit by REML [&#39;lmerMod&#39;]</span>
+<span style="color:#75715e"># Formula: DV ~ A * B * C + (1 | S) + (1 | I)</span>
+<span style="color:#75715e">#    Data: rtdata</span>
 
-<span style="color:#75715e"># REML criterion at convergence: 46222.6</span>
+<span style="color:#75715e"># REML criterion at convergence: 46222.6</span>
 
-<span style="color:#75715e"># Scaled residuals: </span>
-<span style="color:#75715e">#     Min      1Q  Median      3Q     Max </span>
-<span style="color:#75715e"># -2.5634 -0.5519 -0.1915  0.2768  7.9204 </span>
+<span style="color:#75715e"># Scaled residuals: </span>
+<span style="color:#75715e">#     Min      1Q  Median      3Q     Max </span>
+<span style="color:#75715e"># -2.5634 -0.5519 -0.1915  0.2768  7.9204 </span>
 
-<span style="color:#75715e"># Random effects:</span>
-<span style="color:#75715e">#  Groups   Name        Variance Std.Dev.</span>
-<span style="color:#75715e">#  I        (Intercept)  4639     68.11  </span>
-<span style="color:#75715e">#  S        (Intercept)  9718     98.58  </span>
-<span style="color:#75715e">#  Residual             30157    173.66  </span>
-<span style="color:#75715e"># Number of obs: 3494, groups:  I, 118; S, 32</span>
+<span style="color:#75715e"># Random effects:</span>
+<span style="color:#75715e">#  Groups   Name        Variance Std.Dev.</span>
+<span style="color:#75715e">#  I        (Intercept)  4639     68.11  </span>
+<span style="color:#75715e">#  S        (Intercept)  9718     98.58  </span>
+<span style="color:#75715e">#  Residual             30157    173.66  </span>
+<span style="color:#75715e"># Number of obs: 3494, groups:  I, 118; S, 32</span>
 
-<span style="color:#75715e"># Fixed effects:</span>
-<span style="color:#75715e">#             Estimate Std. Error t value</span>
-<span style="color:#75715e"># (Intercept) 617.2975    18.7566  32.911</span>
-<span style="color:#75715e"># A1          -20.5304     2.9422  -6.978</span>
-<span style="color:#75715e"># B1          -12.8787     2.9507  -4.365</span>
-<span style="color:#75715e"># C1           -6.0019     6.9360  -0.865</span>
-<span style="color:#75715e"># A1:B1        -8.4169     2.9450  -2.858</span>
-<span style="color:#75715e"># A1:C1         1.3357     2.9431   0.454</span>
-<span style="color:#75715e"># B1:C1         2.8175     2.9479   0.956</span>
-<span style="color:#75715e"># A1:B1:C1     -0.9589     2.9447  -0.326</span>
+<span style="color:#75715e"># Fixed effects:</span>
+<span style="color:#75715e">#             Estimate Std. Error t value</span>
+<span style="color:#75715e"># (Intercept) 617.2975    18.7566  32.911</span>
+<span style="color:#75715e"># A1          -20.5304     2.9422  -6.978</span>
+<span style="color:#75715e"># B1          -12.8787     2.9507  -4.365</span>
+<span style="color:#75715e"># C1           -6.0019     6.9360  -0.865</span>
+<span style="color:#75715e"># A1:B1        -8.4169     2.9450  -2.858</span>
+<span style="color:#75715e"># A1:C1         1.3357     2.9431   0.454</span>
+<span style="color:#75715e"># B1:C1         2.8175     2.9479   0.956</span>
+<span style="color:#75715e"># A1:B1:C1     -0.9589     2.9447  -0.326</span>
 
-<span style="color:#75715e"># Correlation of Fixed Effects:</span>
-<span style="color:#75715e">#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1 </span>
-<span style="color:#75715e"># A1       -0.002                                          </span>
-<span style="color:#75715e"># B1       -0.001  0.001                                   </span>
-<span style="color:#75715e"># C1        0.002 -0.003  0.001                            </span>
-<span style="color:#75715e"># A1:B1     0.000 -0.009 -0.009  0.001                     </span>
-<span style="color:#75715e"># A1:C1    -0.001  0.012  0.002 -0.005  0.004              </span>
-<span style="color:#75715e"># B1:C1     0.001  0.002  0.012 -0.003 -0.005  0.001       </span>
-<span style="color:#75715e"># A1:B1:C1  0.000  0.004 -0.005  0.000  0.013 -0.009 -0.009</span>
+<span style="color:#75715e"># Correlation of Fixed Effects:</span>
+<span style="color:#75715e">#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1 </span>
+<span style="color:#75715e"># A1       -0.002                                          </span>
+<span style="color:#75715e"># B1       -0.001  0.001                                   </span>
+<span style="color:#75715e"># C1        0.002 -0.003  0.001                            </span>
+<span style="color:#75715e"># A1:B1     0.000 -0.009 -0.009  0.001                     </span>
+<span style="color:#75715e"># A1:C1    -0.001  0.012  0.002 -0.005  0.004              </span>
+<span style="color:#75715e"># B1:C1     0.001  0.002  0.012 -0.003 -0.005  0.001       </span>
+<span style="color:#75715e"># A1:B1:C1  0.000  0.004 -0.005  0.000  0.013 -0.009 -0.009</span>
 
 
 <span style="color:#a6e22e">summary</span>(glmm1)
 
-<span style="color:#75715e"># Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) [&#39;glmerMod&#39;]</span>
-<span style="color:#75715e">#  Family: Gamma  ( identity )</span>
-<span style="color:#75715e"># Formula: DV ~ A * B * C + (1 | S) + (1 | I)</span>
-<span style="color:#75715e">#    Data: rtdata</span>
-<span style="color:#75715e"># Control: glmerControl(optimizer = &#34;bobyqa&#34;)</span>
+<span style="color:#75715e"># Generalized linear mixed model fit by maximum likelihood (Laplace Approximation) [&#39;glmerMod&#39;]</span>
+<span style="color:#75715e">#  Family: Gamma  ( identity )</span>
+<span style="color:#75715e"># Formula: DV ~ A * B * C + (1 | S) + (1 | I)</span>
+<span style="color:#75715e">#    Data: rtdata</span>
+<span style="color:#75715e"># Control: glmerControl(optimizer = &#34;bobyqa&#34;)</span>
 
-<span style="color:#75715e">#      AIC      BIC   logLik deviance df.resid </span>
-<span style="color:#75715e">#  44518.0  44585.8 -22248.0  44496.0     3483 </span>
+<span style="color:#75715e">#      AIC      BIC   logLik deviance df.resid </span>
+<span style="color:#75715e">#  44518.0  44585.8 -22248.0  44496.0     3483 </span>
 
-<span style="color:#75715e"># Scaled residuals: </span>
-<span style="color:#75715e">#     Min      1Q  Median      3Q     Max </span>
-<span style="color:#75715e"># -1.6330 -0.5973 -0.2142  0.2849  9.3370 </span>
+<span style="color:#75715e"># Scaled residuals: </span>
+<span style="color:#75715e">#     Min      1Q  Median      3Q     Max </span>
+<span style="color:#75715e"># -1.6330 -0.5973 -0.2142  0.2849  9.3370 </span>
 
-<span style="color:#75715e"># Random effects:</span>
-<span style="color:#75715e">#  Groups   Name        Variance  Std.Dev.</span>
-<span style="color:#75715e">#  I        (Intercept) 2.542e+03 50.4143 </span>
-<span style="color:#75715e">#  S        (Intercept) 2.650e+03 51.4763 </span>
-<span style="color:#75715e">#  Residual             7.222e-02  0.2687 </span>
-<span style="color:#75715e"># Number of obs: 3494, groups:  I, 118; S, 32</span>
+<span style="color:#75715e"># Random effects:</span>
+<span style="color:#75715e">#  Groups   Name        Variance  Std.Dev.</span>
+<span style="color:#75715e">#  I        (Intercept) 2.542e+03 50.4143 </span>
+<span style="color:#75715e">#  S        (Intercept) 2.650e+03 51.4763 </span>
+<span style="color:#75715e">#  Residual             7.222e-02  0.2687 </span>
+<span style="color:#75715e"># Number of obs: 3494, groups:  I, 118; S, 32</span>
 
-<span style="color:#75715e"># Fixed effects:</span>
-<span style="color:#75715e">#             Estimate Std. Error t value Pr(&gt;|z|)    </span>
-<span style="color:#75715e"># (Intercept)  654.865      6.926  94.545  &lt; 2e-16 ***</span>
-<span style="color:#75715e"># A1           -21.591      2.196  -9.832  &lt; 2e-16 ***</span>
-<span style="color:#75715e"># B1           -13.413      2.225  -6.030 1.64e-09 ***</span>
-<span style="color:#75715e"># C1            -3.338      6.022  -0.554    0.579    </span>
-<span style="color:#75715e"># A1:B1        -10.278      2.208  -4.654 3.26e-06 ***</span>
-<span style="color:#75715e"># A1:C1          0.495      2.236   0.221    0.825    </span>
-<span style="color:#75715e"># B1:C1          2.688      2.214   1.214    0.225    </span>
-<span style="color:#75715e"># A1:B1:C1      -1.054      2.215  -0.476    0.634    </span>
-<span style="color:#75715e"># ---</span>
-<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span style="color:#75715e"># Fixed effects:</span>
+<span style="color:#75715e">#             Estimate Std. Error t value Pr(&gt;|z|)    </span>
+<span style="color:#75715e"># (Intercept)  654.865      6.926  94.545  &lt; 2e-16 ***</span>
+<span style="color:#75715e"># A1           -21.591      2.196  -9.832  &lt; 2e-16 ***</span>
+<span style="color:#75715e"># B1           -13.413      2.225  -6.030 1.64e-09 ***</span>
+<span style="color:#75715e"># C1            -3.338      6.022  -0.554    0.579    </span>
+<span style="color:#75715e"># A1:B1        -10.278      2.208  -4.654 3.26e-06 ***</span>
+<span style="color:#75715e"># A1:C1          0.495      2.236   0.221    0.825    </span>
+<span style="color:#75715e"># B1:C1          2.688      2.214   1.214    0.225    </span>
+<span style="color:#75715e"># A1:B1:C1      -1.054      2.215  -0.476    0.634    </span>
+<span style="color:#75715e"># ---</span>
+<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
 
-<span style="color:#75715e"># Correlation of Fixed Effects:</span>
-<span style="color:#75715e">#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1 </span>
-<span style="color:#75715e"># A1        0.003                                          </span>
-<span style="color:#75715e"># B1       -0.019 -0.027                                   </span>
-<span style="color:#75715e"># C1        0.028  0.008 -0.013                            </span>
-<span style="color:#75715e"># A1:B1     0.006 -0.053 -0.083  0.014                     </span>
-<span style="color:#75715e"># A1:C1     0.002 -0.024  0.004 -0.026  0.018              </span>
-<span style="color:#75715e"># B1:C1    -0.042  0.007 -0.030 -0.032  0.010 -0.029       </span>
-<span style="color:#75715e"># A1:B1:C1  0.010  0.015  0.007 -0.004 -0.037 -0.070 -0.064</span>
+<span style="color:#75715e"># Correlation of Fixed Effects:</span>
+<span style="color:#75715e">#          (Intr) A1     B1     C1     A1:B1  A1:C1  B1:C1 </span>
+<span style="color:#75715e"># A1        0.003                                          </span>
+<span style="color:#75715e"># B1       -0.019 -0.027                                   </span>
+<span style="color:#75715e"># C1        0.028  0.008 -0.013                            </span>
+<span style="color:#75715e"># A1:B1     0.006 -0.053 -0.083  0.014                     </span>
+<span style="color:#75715e"># A1:C1     0.002 -0.024  0.004 -0.026  0.018              </span>
+<span style="color:#75715e"># B1:C1    -0.042  0.007 -0.030 -0.032  0.010 -0.029       </span>
+<span style="color:#75715e"># A1:B1:C1  0.010  0.015  0.007 -0.004 -0.037 -0.070 -0.064</span>
 </code></pre></div><p>Call <code>car::Anova</code> on lmer model:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## in this example, I want to investigate the interaction, so use type=3</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## in this example, I want to investigate the interaction, so use type=3</span>
 car<span style="color:#f92672">::</span><span style="color:#a6e22e">Anova</span>(lmm1, type<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
 
-<span style="color:#75715e"># Analysis of Deviance Table (Type III Wald chisquare tests)</span>
-<span style="color:#75715e"># </span>
-<span style="color:#75715e"># Response: DV</span>
-<span style="color:#75715e">#                 Chisq Df Pr(&gt;Chisq)    </span>
-<span style="color:#75715e"># (Intercept) 1083.1362  1  &lt; 2.2e-16 ***</span>
-<span style="color:#75715e"># A             48.6906  1  2.997e-12 ***</span>
-<span style="color:#75715e"># B             19.0495  1  1.274e-05 ***</span>
-<span style="color:#75715e"># C              0.7488  1   0.386864    </span>
-<span style="color:#75715e"># A:B            8.1682  1   0.004263 ** </span>
-<span style="color:#75715e"># A:C            0.2060  1   0.649944    </span>
-<span style="color:#75715e"># B:C            0.9135  1   0.339185    </span>
-<span style="color:#75715e"># A:B:C          0.1060  1   0.744694    </span>
-<span style="color:#75715e"># ---</span>
-<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span style="color:#75715e"># Analysis of Deviance Table (Type III Wald chisquare tests)</span>
+<span style="color:#75715e"># </span>
+<span style="color:#75715e"># Response: DV</span>
+<span style="color:#75715e">#                 Chisq Df Pr(&gt;Chisq)    </span>
+<span style="color:#75715e"># (Intercept) 1083.1362  1  &lt; 2.2e-16 ***</span>
+<span style="color:#75715e"># A             48.6906  1  2.997e-12 ***</span>
+<span style="color:#75715e"># B             19.0495  1  1.274e-05 ***</span>
+<span style="color:#75715e"># C              0.7488  1   0.386864    </span>
+<span style="color:#75715e"># A:B            8.1682  1   0.004263 ** </span>
+<span style="color:#75715e"># A:C            0.2060  1   0.649944    </span>
+<span style="color:#75715e"># B:C            0.9135  1   0.339185    </span>
+<span style="color:#75715e"># A:B:C          0.1060  1   0.744694    </span>
+<span style="color:#75715e"># ---</span>
+<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
 </code></pre></div><p>Call <code>car::Anova</code> on glmer model:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R">car<span style="color:#f92672">::</span><span style="color:#a6e22e">Anova</span>(glmm1, type<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)
 
-<span style="color:#75715e"># Analysis of Deviance Table (Type III Wald chisquare tests)</span>
-<span style="color:#75715e"># </span>
-<span style="color:#75715e"># Response: DV</span>
-<span style="color:#75715e">#                 Chisq Df Pr(&gt;Chisq)    </span>
-<span style="color:#75715e"># (Intercept) 8938.7224  1  &lt; 2.2e-16 ***</span>
-<span style="color:#75715e"># A             96.6718  1  &lt; 2.2e-16 ***</span>
-<span style="color:#75715e"># B             36.3555  1  1.644e-09 ***</span>
-<span style="color:#75715e"># C              0.3072  1     0.5794    </span>
-<span style="color:#75715e"># A:B           21.6573  1  3.260e-06 ***</span>
-<span style="color:#75715e"># A:C            0.0490  1     0.8248    </span>
-<span style="color:#75715e"># B:C            1.4737  1     0.2248    </span>
-<span style="color:#75715e"># A:B:C          0.2264  1     0.6342    </span>
-<span style="color:#75715e"># ---</span>
-<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span style="color:#75715e"># Analysis of Deviance Table (Type III Wald chisquare tests)</span>
+<span style="color:#75715e"># </span>
+<span style="color:#75715e"># Response: DV</span>
+<span style="color:#75715e">#                 Chisq Df Pr(&gt;Chisq)    </span>
+<span style="color:#75715e"># (Intercept) 8938.7224  1  &lt; 2.2e-16 ***</span>
+<span style="color:#75715e"># A             96.6718  1  &lt; 2.2e-16 ***</span>
+<span style="color:#75715e"># B             36.3555  1  1.644e-09 ***</span>
+<span style="color:#75715e"># C              0.3072  1     0.5794    </span>
+<span style="color:#75715e"># A:B           21.6573  1  3.260e-06 ***</span>
+<span style="color:#75715e"># A:C            0.0490  1     0.8248    </span>
+<span style="color:#75715e"># B:C            1.4737  1     0.2248    </span>
+<span style="color:#75715e"># A:B:C          0.2264  1     0.6342    </span>
+<span style="color:#75715e"># ---</span>
+<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
 
-<span style="color:#75715e">## Note that the valus in column &#34;Pr(&gt;Chisq)&#34; here is the same as the </span>
-<span style="color:#75715e">## column &#34;Pr(&gt;|z|)&#34; in the &#34;Fixed Effects&#34; part of &#34;summary(glmm1)&#34;</span>
+<span style="color:#75715e">## Note that the valus in column &#34;Pr(&gt;Chisq)&#34; here is the same as the </span>
+<span style="color:#75715e">## column &#34;Pr(&gt;|z|)&#34; in the &#34;Fixed Effects&#34; part of &#34;summary(glmm1)&#34;</span>
 </code></pre></div><p>However, the Wald test is not very good. If you want to try better methods to test the fixed effects, you can learn to use packages like <code>lmerTest</code>, <code>KRmodcomp</code>, and <code>PBmodcomp</code>. Besides them, I found the package <code>afex</code> can be very useful. It sort of combines these packages and <code>lme4</code> together, and makes model fitting and p-values calculating easier. You can just use the <code>afex::mixed</code> function to fit the model and choose a method you want to obtain p-values. The default method &ldquo;KR&rdquo; (= Kenward-Roger) as well as method=&quot;S&rdquo; (Satterthwaite) support LMMs and the other methods (&ldquo;LRT&rdquo; = likelihood-ratio tests and &ldquo;PB&rdquo; = parametric bootstrap) support both LMMs (estimated via lmer) and GLMMs. For more detail, see the <a href="https://cran.r-project.org/web/packages/afex/afex.pdf">afex documentation</a>.</p>
 <p>One big problem I encountered when using <code>afex</code> is that, sometimes when fitting a very complex LMM or fitting a GLMM, the program gave me a lot of convergence warnings. Because I don't know any technique details of fitting (G)LMM or those R packages, I can only look for peoples&rsquo; instructions and answers online and follow them. But almost all of them are teaching me how to deal with the convergence problem for a (g)lmer model, not for a <code>afex::mixed</code> model. So I decide to stick with the <code>lme4</code> packge and learn to calculate the p-values on the newly fitted model after solving the convergence problem.</p>
 <p>In LRT, the full model and a restricted model are compared. The <a href="https://stackoverflow.com/questions/11335923/how-to-remove-a-lower-order-parameter-in-a-model-when-the-higher-order-parameter">question and answers here</a> show that you can't get a correct restricted model by <code>update(lm, .~.-FactorA)</code> if the model have interactions (<code>value ~ FactorA*FactorB</code>). I put the example here:</p>
@@ -232,58 +232,58 @@ d <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.fram
 m1 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lm</span>(value <span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B, data <span style="color:#f92672">=</span> d)
 m1
 
-<span style="color:#75715e"># Call:</span>
-<span style="color:#75715e"># lm(formula = value ~ A * B, data = d)</span>
-<span style="color:#75715e">#</span>
-<span style="color:#75715e"># Coefficients:</span>
-<span style="color:#75715e"># (Intercept)           A1           B1        A1:B1</span>
-<span style="color:#75715e">#    -0.03719     -0.08678      0.12290      0.04380</span>
+<span style="color:#75715e"># Call:</span>
+<span style="color:#75715e"># lm(formula = value ~ A * B, data = d)</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># Coefficients:</span>
+<span style="color:#75715e"># (Intercept)           A1           B1        A1:B1</span>
+<span style="color:#75715e">#    -0.03719     -0.08678      0.12290      0.04380</span>
 
 m2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">update</span>(m1, .~. <span style="color:#f92672">-</span> A)
 m2
 
-<span style="color:#75715e"># Call:</span>
-<span style="color:#75715e"># lm(formula = value ~ B + A:B, data = d)</span>
-<span style="color:#75715e">#</span>
-<span style="color:#75715e"># Coefficients:</span>
-<span style="color:#75715e"># (Intercept)           B1       Bb1:A1       Bb2:A1</span>
-<span style="color:#75715e">#    -0.03719      0.12290     -0.04298     -0.13058</span>
+<span style="color:#75715e"># Call:</span>
+<span style="color:#75715e"># lm(formula = value ~ B + A:B, data = d)</span>
+<span style="color:#75715e">#</span>
+<span style="color:#75715e"># Coefficients:</span>
+<span style="color:#75715e"># (Intercept)           B1       Bb1:A1       Bb2:A1</span>
+<span style="color:#75715e">#    -0.03719      0.12290     -0.04298     -0.13058</span>
 </code></pre></div><p>Look at the coefficients of m2, they are &ldquo;B1, Bb1:A1, Bb2:A1&rdquo;, not &ldquo;B1, A1:B1&rdquo;. According to the answers, the correct way of obtaining a restricted model should be involving manually creating a model matrix using the function <code>model.matrix</code>.</p>
 <p>Below is my example of conducting the LRT for all fixed effects of a (g)lmer model:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## Say we have a glmer model that gives us convergence warnings. Then we </span>
-<span style="color:#75715e">## followed `?convergence` and finally fit a new model glmm1 that doesn&#39;t </span>
-<span style="color:#75715e">## give warnings. So we want to use LRT to test glmm2&#39;s fixed effects.</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## Say we have a glmer model that gives us convergence warnings. Then we </span>
+<span style="color:#75715e">## followed `?convergence` and finally fit a new model glmm1 that doesn&#39;t </span>
+<span style="color:#75715e">## give warnings. So we want to use LRT to test glmm2&#39;s fixed effects.</span>
 
-<span style="color:#75715e">## create design matrix</span>
+<span style="color:#75715e">## create design matrix</span>
 X <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model.matrix</span>(<span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B <span style="color:#f92672">*</span> C, data <span style="color:#f92672">=</span> rtdata)
 
-<span style="color:#75715e">## fit models dropping one effect at a time</span>
-<span style="color:#75715e">## change from 1:ncol(X) to 2:ncol(X)</span>
-<span style="color:#75715e">## to avoid a no intercept model</span>
+<span style="color:#75715e">## fit models dropping one effect at a time</span>
+<span style="color:#75715e">## change from 1:ncol(X) to 2:ncol(X)</span>
+<span style="color:#75715e">## to avoid a no intercept model</span>
 mm <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lapply</span>(<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#a6e22e">ncol</span>(X), <span style="color:#a6e22e">function</span>(i) {
   <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">+</span> X[, <span style="color:#f92672">-</span>i] <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> I), data <span style="color:#f92672">=</span> rtdata)
 })
 full_model <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B <span style="color:#f92672">*</span> C <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S) <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> I), data <span style="color:#f92672">=</span> rtdata)
 <span style="color:#a6e22e">names</span>(mm) <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">c</span>(<span style="color:#a6e22e">colnames</span>(X))
-<span style="color:#75715e">## mm stores 8 restricted models, each of them excludes one fixed </span>
-<span style="color:#75715e">## effect which we want to test</span>
+<span style="color:#75715e">## mm stores 8 restricted models, each of them excludes one fixed </span>
+<span style="color:#75715e">## effect which we want to test</span>
 
-<span style="color:#75715e">## use `anova` to test. For example test the effct of A:</span>
+<span style="color:#75715e">## use `anova` to test. For example test the effct of A:</span>
 <span style="color:#a6e22e">anova</span>(full_model, mm<span style="color:#f92672">$</span>A1)
 
-<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
-<span style="color:#75715e"># Data: rtdata</span>
-<span style="color:#75715e"># Models:</span>
-<span style="color:#75715e"># mm$A1: DV ~ 0 + X[, -i] + (1 | S) + (1 | I)</span>
-<span style="color:#75715e"># full_model: DV ~ A * B * C + (1 | S) + (1 | I)</span>
-<span style="color:#75715e">#            Df   AIC   BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)    </span>
-<span style="color:#75715e"># mm$A1      10 46328 46390 -23154    46308                             </span>
-<span style="color:#75715e"># full_model 11 46282 46350 -23130    46260 48.377      1  3.516e-12 ***</span>
-<span style="color:#75715e"># ---</span>
-<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
+<span style="color:#75715e"># Data: rtdata</span>
+<span style="color:#75715e"># Models:</span>
+<span style="color:#75715e"># mm$A1: DV ~ 0 + X[, -i] + (1 | S) + (1 | I)</span>
+<span style="color:#75715e"># full_model: DV ~ A * B * C + (1 | S) + (1 | I)</span>
+<span style="color:#75715e">#            Df   AIC   BIC logLik deviance  Chisq Chi Df Pr(&gt;Chisq)    </span>
+<span style="color:#75715e"># mm$A1      10 46328 46390 -23154    46308                             </span>
+<span style="color:#75715e"># full_model 11 46282 46350 -23130    46260 48.377      1  3.516e-12 ***</span>
+<span style="color:#75715e"># ---</span>
+<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
 </code></pre></div><p>What if there's a factor that has more than 2 levels? Just exclude multiple columns that corresponds to the effect from the model matrix:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## generate some data, S = random effect factor, A and B = fixed effect factor, </span>
-<span style="color:#75715e">## A has 3 levels. DV = dependent variable</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-R" data-lang="R"><span style="color:#75715e">## generate some data, S = random effect factor, A and B = fixed effect factor, </span>
+<span style="color:#75715e">## A has 3 levels. DV = dependent variable</span>
 rtdata2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">data.frame</span>(
   S <span style="color:#f92672">=</span> <span style="color:#a6e22e">factor</span>(S <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">rep</span>(<span style="color:#a6e22e">seq_along</span>(n <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">sample</span>(<span style="color:#ae81ff">3</span><span style="color:#f92672">:</span><span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">60</span>, <span style="color:#66d9ef">TRUE</span>)), n)),
   A <span style="color:#f92672">=</span> <span style="color:#a6e22e">sample</span>(<span style="color:#a6e22e">c</span>(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a1&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a2&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">a3&#34;</span>), <span style="color:#a6e22e">length</span>(S), <span style="color:#66d9ef">TRUE</span>),
@@ -292,40 +292,40 @@ rtdata2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">dat
 
 full_model2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S), rtdata2)
 
-<span style="color:#75715e">## create design matrix</span>
+<span style="color:#75715e">## create design matrix</span>
 X2 <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">model.matrix</span>(<span style="color:#f92672">~</span> A <span style="color:#f92672">*</span> B, data <span style="color:#f92672">=</span> rtdata2)
-<span style="color:#75715e">## exclude the columns that contains &#34;A&#34;</span>
+<span style="color:#75715e">## exclude the columns that contains &#34;A&#34;</span>
 X2_A <span style="color:#f92672">&lt;-</span> X2[, <span style="color:#f92672">!</span><span style="color:#a6e22e">grepl</span>(pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A[0-9]$&#34;</span>, <span style="color:#a6e22e">colnames</span>(X2))]
 res_model_A <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">+</span> X2_A <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S), data <span style="color:#f92672">=</span> rtdata2)
 
-<span style="color:#75715e">## test the effect of A</span>
+<span style="color:#75715e">## test the effect of A</span>
 <span style="color:#a6e22e">anova</span>(full_model2, res_model_A)
 
-<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
-<span style="color:#75715e"># Data: rtdata2</span>
-<span style="color:#75715e"># Models:</span>
-<span style="color:#75715e"># res_model_A: DV ~ 0 + X2_A + (1 | S)</span>
-<span style="color:#75715e"># full_model2: DV ~ A * B + (1 | S)</span>
-<span style="color:#75715e">#             Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)</span>
-<span style="color:#75715e"># res_model_A  6 1047.8 1070.8 -517.89   1035.8                         </span>
-<span style="color:#75715e"># full_model2  8 1048.1 1078.9 -516.07   1032.1 3.6432      2     0.1618</span>
+<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
+<span style="color:#75715e"># Data: rtdata2</span>
+<span style="color:#75715e"># Models:</span>
+<span style="color:#75715e"># res_model_A: DV ~ 0 + X2_A + (1 | S)</span>
+<span style="color:#75715e"># full_model2: DV ~ A * B + (1 | S)</span>
+<span style="color:#75715e">#             Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)</span>
+<span style="color:#75715e"># res_model_A  6 1047.8 1070.8 -517.89   1035.8                         </span>
+<span style="color:#75715e"># full_model2  8 1048.1 1078.9 -516.07   1032.1 3.6432      2     0.1618</span>
 
-<span style="color:#75715e">## similarly, exclude all interaction terms containing &#34;A&#34; if we </span>
-<span style="color:#75715e">## want to test the effect of interaction</span>
+<span style="color:#75715e">## similarly, exclude all interaction terms containing &#34;A&#34; if we </span>
+<span style="color:#75715e">## want to test the effect of interaction</span>
 X2_AB <span style="color:#f92672">&lt;-</span> X2[, <span style="color:#f92672">!</span><span style="color:#a6e22e">grepl</span>(pattern <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A[0-9]:&#34;</span>, <span style="color:#a6e22e">colnames</span>(X2))]
 res_model_AB <span style="color:#f92672">&lt;-</span> <span style="color:#a6e22e">lmer</span>(DV <span style="color:#f92672">~</span> <span style="color:#ae81ff">0</span> <span style="color:#f92672">+</span> X2_AB <span style="color:#f92672">+</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">|</span> S), data <span style="color:#f92672">=</span> rtdata2)
 <span style="color:#a6e22e">anova</span>(full_model2, res_model_AB)
 
-<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
-<span style="color:#75715e"># Data: rtdata2</span>
-<span style="color:#75715e"># Models:</span>
-<span style="color:#75715e"># res_model_AB: DV ~ 0 + X2_AB + (1 | S)</span>
-<span style="color:#75715e"># full_model2: DV ~ A * B + (1 | S)</span>
-<span style="color:#75715e">#              Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)  </span>
-<span style="color:#75715e"># res_model_AB  6 1050.2 1073.2 -519.08   1038.2                           </span>
-<span style="color:#75715e"># full_model2   8 1048.1 1078.9 -516.07   1032.1 6.0137      2    0.04945 *</span>
-<span style="color:#75715e"># ---</span>
-<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
+<span style="color:#75715e"># refitting model(s) with ML (instead of REML)</span>
+<span style="color:#75715e"># Data: rtdata2</span>
+<span style="color:#75715e"># Models:</span>
+<span style="color:#75715e"># res_model_AB: DV ~ 0 + X2_AB + (1 | S)</span>
+<span style="color:#75715e"># full_model2: DV ~ A * B + (1 | S)</span>
+<span style="color:#75715e">#              Df    AIC    BIC  logLik deviance  Chisq Chi Df Pr(&gt;Chisq)  </span>
+<span style="color:#75715e"># res_model_AB  6 1050.2 1073.2 -519.08   1038.2                           </span>
+<span style="color:#75715e"># full_model2   8 1048.1 1078.9 -516.07   1032.1 6.0137      2    0.04945 *</span>
+<span style="color:#75715e"># ---</span>
+<span style="color:#75715e"># Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</span>
 </code></pre></div><h1 id="takehome">Takehome</h1>
 <p>The <code>lme4::lmer</code> function doesn't provide p-values for coefficients. The <code>lme4::glmer</code> provides p-values for coefficients (but not for effects) using the Wald <em>Z</em>-test, which is not a very good method. So for (g)lmer models which have factor(s) with more than 2 level, or for lmer models, we need some methods to obtain the p-values for the fixed effects.</p>
 <p>We can use the <code>car::Anove</code> or other packages (e.g., <code>lmerTest</code>, <code>KRmodcomp</code>, and <code>PBmodcomp</code>) to obtain p-values. For LRT, in which restricted models need to be fit, matrix models should be used to created the corrected restricted models. Examples of generating restricted models were shown above.</p>
