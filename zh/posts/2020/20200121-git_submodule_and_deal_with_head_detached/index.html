@@ -75,13 +75,15 @@
 
 
 <main>
+<p>我在使用Hugo的过程中发现要和git的子模块打不少交到，一是Hugo的主题都是子模块，再就是如果要把网站放在Github Pages上面，需要将public文件夹部署变为子模块。</p>
 <p>如何将网站部署在Github Pages上，可以参照<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hugo的官方文档</a>。</p>
 <p>之后，如果要在新的计算机上同步这个包含子模块的网站项目，可以参照这篇<a href="https://www.jianshu.com/p/9000cd49822c">文章</a>。但是，我还遇到一个问题，就是每次在新的计算机上同步下来的子模块都会显示detached HEAD，原因和解决方法可以参照<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">这个stackoverflow问答</a>里面用户Simba和deltacrux的回答。简而言之，就是在同步完子模块发现detached HEAD之后，手动把每个子模块checkout到各自的master brunch。也可以用一句命令递归完成这一步骤：</p>
-<pre><code>git submodule foreach --recursive git checkout master
-</code></pre><p>下面，我把上面两个网页中的内容粘贴过来备忘。</p>
+<p><code>git submodule foreach --recursive git checkout master</code></p>
+<p>下面，我把上面两个网页中的内容粘贴过来备忘。</p>
+<hr>
 <h1 id="git-submodule-子模块的管理和使用">Git submodule 子模块的管理和使用</h1>
-<p>作者：Maonx
-链接：https://www.jianshu.com/p/9000cd49822c</p>
+<p>作者：Maonx</p>
+<p>链接：https://www.jianshu.com/p/9000cd49822c</p>
 <h2 id="使用前提">使用前提</h2>
 <p>经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。</p>
 <p>在Git 中你可以用子模块<code>submodule</code>来管理这些项目，<code>submodule</code>允许你将一个Git仓库当作另外一个Git仓库的子目录。这允许你克隆另外一个仓库到你的项目中并且保持你的提交相对独立。</p>
@@ -174,6 +176,7 @@ $ rm -rf assets
 </ol>
 <pre><code>$ rm -rf .git/modules/assets
 </code></pre><h1 id="submodule-detached-head">submodule detached HEAD</h1>
+<p>来源：<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">StackOverflow问答</a></p>
 <p>If your submodule has been detached already, fix the detached state before you do an update with the above commands. cd into the submodule, checkout the submodule to a specific branch with, <code>git checkout master</code>. – Simba Sep 4 &lsquo;19 at 7:28</p>
 <p>Or - if this is too much of a hassle for multiple (recursive) submodules - simply do <code>git submodule foreach --recursive git checkout master</code>. – stefanct</p>
 <p>As other people have said, the reason this happens is that the parent repo only contains a reference to (the SHA1 of) a specific commit in the submodule – it doesn't know anything about branches. This is how it should work: the branch that was at that commit may have moved forward (or backwards), and if the parent repo had referenced the branch then it could easily break when that happens. - deltacrux</p>

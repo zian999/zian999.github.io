@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SSH on Nature and Human</title>
+    <link>https://zian999.github.io/zh/tags/ssh/</link>
+    <description>Recent content in SSH on Nature and Human</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Wed, 22 Jan 2020 10:24:07 -0500</lastBuildDate>
+    
+	<atom:link href="https://zian999.github.io/zh/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github SSH key和SSH config的使用</title>
+      <link>https://zian999.github.io/zh/posts/2020/20200122-generate_ssh_key_and_ssh_config/</link>
+      <pubDate>Wed, 22 Jan 2020 10:24:07 -0500</pubDate>
+      
+      <guid>https://zian999.github.io/zh/posts/2020/20200122-generate_ssh_key_and_ssh_config/</guid>
+      <description>在MacBook上每次git push都要输入Github的用户名和密码十分麻烦。尝试使用SSH做到免密码。</description>
+    </item>
+    
+  </channel>
+</rss>
