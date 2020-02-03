@@ -92,6 +92,19 @@
             <li><a href="#我的补充-1">我的补充</a></li>
           </ul>
         </li>
+        <li><a href="#相关技巧">相关技巧</a>
+          <ul>
+            <li><a href="#管理多组密钥对">管理多组密钥对</a></li>
+            <li><a href="#vim-访问远程文件">vim 访问远程文件</a></li>
+            <li><a href="#远程服务当本地用">远程服务当本地用</a></li>
+            <li><a href="#多连接共享">多连接共享</a></li>
+            <li><a href="#禁用密码登录">禁用密码登录</a></li>
+            <li><a href="#关键词登录">关键词登录</a></li>
+            <li><a href="#代理登录">代理登录</a></li>
+            <li><a href="#远程执行命令">远程执行命令</a></li>
+          </ul>
+        </li>
+        <li><a href="#参考文档">参考文档</a></li>
       </ul>
     </li>
   </ul>
@@ -244,6 +257,116 @@ $ /etc/ssh/ssh_config      # 系统配置文件
 登录用户名</p>
 <h3 id="我的补充-1">我的补充</h3>
 <p>如前面所说，macOS用户可以不用每次都输入passphrase。只需在<code>~/.ssh/config</code>文件中的<code>Host *</code>项下面加入<code>UseKeychain yes</code>，即可将passphrase存入自己的苹果Keychain里。</p>
+<h2 id="相关技巧">相关技巧</h2>
+<h3 id="管理多组密钥对">管理多组密钥对</h3>
+<p>有时候你会针对多个服务器有不同的密钥对，每次通过指定<code>-i1</code>参数也是非常的不方便。比如你使用github和coding。那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+<pre><code>Host github
+    HostName %h.com
+    IdentityFile ~/.ssh/id_ecdsa_github
+    User git
+Host coding
+    HostName git.coding.net
+    IdentityFile ~/.ssh/id_rsa_coding
+    User git
+</code></pre>
+<p>当你克隆 coding 上的某个仓库时：</p>
+<pre><code class="language-bash"># 原来
+$ git clone git@git.coding.net:deepzz/test.git
+
+# 现在
+$ git clone coding:deepzz/test.git
+</code></pre>
+<h3 id="vim-访问远程文件">vim 访问远程文件</h3>
+<p>vim 可以直接编辑远程服务器上的文件：</p>
+<pre><code class="language-bash">$ vim scp://root@example.com//home/centos/docker-compose.yml
+$ vim scp://example//home/centos/docker-compose.yml
+</code></pre>
+<h3 id="远程服务当本地用">远程服务当本地用</h3>
+<p>通过 LocalForward 将本地端口上的数据流量通过 ssh 转发到远程主机的指定端口。感觉你是使用的本地服务，其实你使用的远程服务。如远程服务器上运行着 Postgres，端口 5432（未暴露端口给外部）。那么，你可以：</p>
+<pre><code>Host db
+    HostName db.example.com
+    LocalForward 5433 localhost:5432
+</code></pre>
+<p>当你连接远程主机时，它会在本地打开一个 5433 端口，并将该端口的流量通过 ssh 转发到远程服务器上的 5432 端口。</p>
+<p>首先，建立连接：</p>
+<pre><code class="language-bash">$ ssh db
+</code></pre>
+<p>之后，就可以通过 Postgres 客户端连接本地 5433 端口：</p>
+<pre><code class="language-bash">$ psql -h localhost -p 5433 orders
+</code></pre>
+<h3 id="多连接共享">多连接共享</h3>
+<p>什么是多连接共享？在你打开多个 shell 窗口时需要连接同一台服务器，如果你不想每次都输入用户名，密码，或是等待连接建立，那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+<pre><code>ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+</code></pre>
+<h3 id="禁用密码登录">禁用密码登录</h3>
+<p>如果你对服务器安全要求很高，那么禁用密码登录是必须的。因为使用密码登录服务器容易受到暴力破解的攻击，有一定的安全隐患。那么你需要编辑服务器的系统配置文件<code>/etc/ssh/sshd_config</code>：</p>
+<pre><code>PasswordAuthentication no
+ChallengeResponseAuthentication no
+</code></pre>
+<h3 id="关键词登录">关键词登录</h3>
+<p>为了更方便的登录服务器，我们也可以省略用户名和主机名，采用关键词登录。那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+<pre><code>Host deepzz                        # 别名
+    HostName deepzz.com            # 主机地址
+    User root                      # 用户名
+    # IdentityFile ~/.ssh/id_ecdsa # 认证文件
+    # Port 22                      # 指定端口
+</code></pre>
+<p>那么使用<code>$ ssh deepzz</code>就可以直接登录服务器了。</p>
+<h3 id="代理登录">代理登录</h3>
+<p>有的时候你可能没法直接登录到某台服务器，而需要使用一台中间服务器进行中转，如公司内网服务器。首先确保你已经为服务器配置了公钥访问，并开启了agent forwarding，那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+<pre><code>Host gateway
+    HostName proxy.example.com
+    User root
+Host db
+    HostName db.internal.example.com                  # 目标服务器地址
+    User root                                         # 用户名
+    # IdentityFile ~/.ssh/id_ecdsa                    # 认证文件
+    ProxyCommand ssh gateway netcat -q 600 %h %p      # 代理命令
+</code></pre>
+<p>那么你现在可以使用<code>$ ssh db</code>连接了。</p>
+<h3 id="远程执行命令">远程执行命令</h3>
+<p>日常情况我们需要到服务器上去执行一些命令或拷贝文件，本来是很简单的一件事情，但做得多了就比较繁琐了。通过 SSH 帮我们远程执行相关命令或脚本，非常棒。</p>
+<p>如有不了解的知识点，请阅读前面。利用 SSH 来帮我们在本地执行命令：</p>
+<p>1、执行远程命令：</p>
+<pre><code class="language-bash">$ ssh example &quot;cd /; ls&quot;
+bin
+boot
+data
+...
+</code></pre>
+<p>2、执行多行命令：</p>
+<pre><code class="language-bash">$ ssh example &quot;
+dquote&gt; cd / 
+dquote&gt; ls
+dquote&gt; &quot;
+bin
+boot
+data
+...
+</code></pre>
+<p>3、执行本地脚本</p>
+<p>有时候，我们会将经常用到命令，如将一个复杂命令写入到一个 shell 脚本中，但又不想拷贝到服务器上，那么：</p>
+<pre><code class="language-bash"># 示例脚本
+$ echo &quot;cd /; ls&quot; &gt; test.sh
+# 为脚本添加可执行权限
+$ chmod +x test.sh
+
+# 远程执行本地脚本
+$ ssh example &lt; test.sh
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+bin
+boot
+data
+...
+</code></pre>
+<p>4、执行需要交互的命令</p>
+<pre><code class="language-bash">ssh -t example &quot;top&quot;
+</code></pre>
+<h2 id="参考文档">参考文档</h2>
+<p>[1] <a href="https://www.freebsd.org/cgi/man.cgi?query=ssh_config">https://www.freebsd.org/cgi/man.cgi?query=ssh_config</a></p>
+<p>[2] <a href="https://zh.wikipedia.org/wiki/Secure_Shell">https://zh.wikipedia.org/wiki/Secure_Shell</a></p>
+<p>[3] <a href="http://wowubuntu.com/ssh-tips.html">http://wowubuntu.com/ssh-tips.html</a></p>
 
 </main>
 
