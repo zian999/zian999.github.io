@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How to add a new lens profile to (ceased) Lightroom 6 | Nature and Human</title>
+    <title>Solve the connection problem of Smart Keyboard (not recognized by iPad Pro) | Nature and Human</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
 
@@ -61,13 +61,13 @@
     <br/>
 
 <div class="article-meta">
-<h1><span class="title">How to add a new lens profile to (ceased) Lightroom 6</span></h1>
+<h1><span class="title">Solve the connection problem of Smart Keyboard (not recognized by iPad Pro)</span></h1>
 
-<h2 class="date">2019/06/04</h2>
+<h2 class="date">2020/04/02</h2>
 <p class="terms">
   
   
-  Tags: <a href="/tags/photography">photography</a> 
+  Tags: <a href="/tags/apple">Apple</a> 
   
   
 </p>
@@ -76,31 +76,15 @@
 
 
 <main>
-<p>I have purchased a Lightroom 6 license and used the software happily for a long time, until Adobe announced that it was going to discontinue LR in 2017 and launched the <em>Lightroom Classic CC</em> which can only be used with subscription. For now, I don&rsquo;t have any plan to upgrade to LR Classic since I haven&rsquo;t see much benefit in the transfering.</p>
+<p>I purchased the Smart Keyboard for my iPad Pro 10.5 on the first day it was available. It worked well for about 2 years and I don’t remember from when it suddenly stopped working. Nothing happens if I connect it to my iPad. After some googling I found that this seems to be a common problem encountered by other Smart Keyboard owners. But no reliable solutions to this problem can be found. The only thing that’s clear is that Apple doesn’t admit this product has a defect and only launched a recall for Smart Keyboards of the first generation iPad Pro. Since my iPad Pro 10.5 is the second generation and the keyboard is out of warranty, I didn’t bother to go to the apple store for a repair. Instead, I just put the keyboard in my draw.</p>
 
-<p>However, I am planning to buy a new Tamron wide angle lens which is not supported by LR6 (final version 6.13). It means that the lens correction feature is not usable for that lens (and any new lens released after LR6). One solution is to make the lens profile myself using the <a href="https://helpx.adobe.com/photoshop/digital-negative.html#Adobe_Lens_Profile_Creator">Adobe Lens Profile Creator</a>. By the way, there seemed to be an Adobe Lens Profile Downloader, but was also killed by Adobe. Their note writes: As of 1/1/2018, the Adobe Lens Profile Downloader is no longer developed and is unavailable for download. Adobe&rsquo;s development team adds new lens profiles every release.</p>
+<p>However, yesterday I took it out and tried to see if I can make it work again, since I’ve been at home for a long time due to the COVID-19 situation. It turns out that the problem is indeed a design defect. It’s caused by the “smart connector” of the first generation of Smart Keyboard. Good news is that this problem is easy to fix.</p>
 
-<p>Luckily, there&rsquo;s an easier method that allows me to add new lens profiles to the old LR6. According to one answer to <a href="https://forums.adobe.com/thread/2518319">this question in Adobe forum</a>, after installing the DNG converter there&rsquo;s a folder that stores all the lensprofiles. On windows, the location is (e.g.,)</p>
+<p>If you remove the small plastic cover around the three metal connectors of the smart connector, you can see that there are three thin metal slices. It&rsquo;s probable that after one or two years, they had some deformation which makes the connection between the keyboard and the iPad less reliable or, in my case, not working at all. The solution is easy and straightforward - just lift them a little bit with a needle or knife. Now, my &ldquo;Smart&rdquo; Keyboard works perfectly again.</p>
 
-<pre><code>C:\ProgramData\Adobe\CameraRaw\LensProfiles\1.0\Sigma\Sigma
-</code></pre>
+<p><img src="/images/posts/2020/not_smart_connector.jpg" alt="after removing the plastic cover" width="70%" height="70%" /></p>
 
-<p>By copying the lensprofile (a <code>.lcp</code> file) I need to the user folder</p>
-
-<pre><code>C:\Users\**username**\AppData\Roaming\Adobe\CameraRaw\LensProfiles\1.0\Downloaded
-</code></pre>
-
-<p>I can use that lensprofile in old version LR.</p>
-
-<p>For Mac users, this will work too but the locations are different from Windows. According to the answer of <a href="https://forums.adobe.com/thread/2388427">this quesion in Adobe forum</a>, Mac users need to copy <code>.lcp</code> file(s) from (e.g.,)</p>
-
-<pre><code>/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0/Pentax/[profile you wish to use].lcp
-</code></pre>
-
-<p>to the user folder</p>
-
-<pre><code>/Users/[your user name]/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0
-</code></pre>
+<p>Hope this helps other owners of the “Smart Keyboard”.</p>
 
 </main>
 

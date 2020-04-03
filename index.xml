@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Nature and Human</title>
@@ -6,10 +6,19 @@
     <description>Recent content in Home on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 28 Feb 2020 21:51:00 -0500</lastBuildDate>
+    <lastBuildDate>Thu, 02 Apr 2020 18:02:00 -0500</lastBuildDate>
     
 	<atom:link href="https://zian999.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Solve the connection problem of Smart Keyboard (not recognized by iPad Pro)</title>
+      <link>https://zian999.github.io/posts/2020/20200402-solve_connection_problem_of_smart_keyboard/</link>
+      <pubDate>Thu, 02 Apr 2020 18:02:00 -0500</pubDate>
+      
+      <guid>https://zian999.github.io/posts/2020/20200402-solve_connection_problem_of_smart_keyboard/</guid>
+      <description>I purchased the Smart Keyboard for my iPad Pro 10.5 on the first day it was available. It worked well for about 2 years and I don’t remember from when it suddenly stopped working. Nothing happens if I connect it to my iPad. After some googling I found that this seems to be a common problem encountered by other Smart Keyboard owners. But no reliable solutions to this problem can be found.</description>
+    </item>
     
     <item>
       <title>Update local lensfun database for Darktable</title>
@@ -19,7 +28,7 @@
       <guid>https://zian999.github.io/posts/2020/20200228-update_local_lensfun_database/</guid>
       <description>I just give up using Lightroom.
 Because I had to reinstall my system after Christmas, so I choose to try and install Manjaro along with the OEM Windows10. Taking this opportunity, I spent some time transfered all my photo collections from Lightroom 6 to Darktable.
-The darktable used Lensfun library to perform lens correction. Lensfun have collected a lot of lens and camera data. By now (2020-02-28) there&#39;re 1057 lenses in the database, and all the popular cameras are covered.</description>
+The darktable used Lensfun library to perform lens correction. Lensfun have collected a lot of lens and camera data. By now (2020-02-28) there&amp;rsquo;re 1057 lenses in the database, and all the popular cameras are covered.</description>
     </item>
     
     <item>
@@ -28,8 +37,8 @@ The darktable used Lensfun library to perform lens correction. Lensfun have coll
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
       <guid>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
-      <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&#39;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
-If you use lme4::glmer, you&#39;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
+      <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
+If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
     </item>
     
     <item>
@@ -38,7 +47,7 @@ If you use lme4::glmer, you&#39;ll find that there are p-values listed in the su
       <pubDate>Tue, 04 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</guid>
-      <description>The Lightroom 6 was killed by Adobe in 2017 and will never get updates any more. For people (like me) who don&#39;t want to subscribe to Adobe&#39;s plans and are sticking with LR6, I found a way to add new lens profiles to LR6.</description>
+      <description>The Lightroom 6 was killed by Adobe in 2017 and will never get updates any more. For people (like me) who don&amp;rsquo;t want to subscribe to Adobe&amp;rsquo;s plans and are sticking with LR6, I found a way to add new lens profiles to LR6.</description>
     </item>
     
     <item>
@@ -47,7 +56,7 @@ If you use lme4::glmer, you&#39;ll find that there are p-values listed in the su
       <pubDate>Thu, 30 May 2019 00:00:00 +0000</pubDate>
       
       <guid>https://zian999.github.io/posts/2019/point_pelee_2019/</guid>
-      <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&#39;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
+      <description>Two week ago, we went to the Point Pelee National Park to watch the migrating birds (mainly warblers). It&amp;rsquo;s a wonderful experience. We saw a lot of birds that we have never seen before in local area.</description>
     </item>
     
   </channel>

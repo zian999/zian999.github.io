@@ -75,46 +75,62 @@
 
 
 <br/><nav id="TableOfContents">
-  <ul>
-    <li><a href="#git-submodule-子模块的管理和使用">Git submodule 子模块的管理和使用</a>
-      <ul>
-        <li><a href="#使用前提">使用前提</a></li>
-        <li><a href="#添加子模块">添加子模块</a></li>
-        <li><a href="#查看子模块">查看子模块</a></li>
-        <li><a href="#更新子模块">更新子模块</a></li>
-        <li><a href="#克隆包含子模块的项目">克隆包含子模块的项目</a>
-          <ul>
-            <li><a href="#克隆父项目再更新子模块">克隆父项目，再更新子模块</a></li>
-            <li><a href="#递归克隆整个项目">递归克隆整个项目</a></li>
-          </ul>
-        </li>
-        <li><a href="#修改子模块">修改子模块</a></li>
-        <li><a href="#删除子模块">删除子模块</a></li>
-      </ul>
-    </li>
-    <li><a href="#解决submodule-detached-head问题">解决submodule detached HEAD问题</a></li>
-  </ul>
+<ul>
+<li><a href="#git-submodule-子模块的管理和使用">Git submodule 子模块的管理和使用</a>
+<ul>
+<li><a href="#使用前提">使用前提</a></li>
+<li><a href="#添加子模块">添加子模块</a></li>
+<li><a href="#查看子模块">查看子模块</a></li>
+<li><a href="#更新子模块">更新子模块</a></li>
+<li><a href="#克隆包含子模块的项目">克隆包含子模块的项目</a>
+<ul>
+<li><a href="#克隆父项目-再更新子模块">克隆父项目，再更新子模块</a></li>
+<li><a href="#递归克隆整个项目">递归克隆整个项目</a></li>
+</ul></li>
+<li><a href="#修改子模块">修改子模块</a></li>
+<li><a href="#删除子模块">删除子模块</a></li>
+</ul></li>
+<li><a href="#解决submodule-detached-head问题">解决submodule detached HEAD问题</a></li>
+</ul>
 </nav><br/>
 
 
 <main>
+
+
 <p>我在使用Hugo的过程中发现要和git的子模块打不少交到，一是Hugo的主题都是子模块，再就是如果要把网站放在Github Pages上面，需要将public文件夹部署变为子模块。</p>
+
 <p>如何将网站部署在Github Pages上，可以参照<a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">Hugo的官方文档</a>。</p>
+
 <p>之后，如果要在新的计算机上同步这个包含子模块的网站项目，可以参照这篇<a href="https://www.jianshu.com/p/9000cd49822c">文章</a>。但是，我还遇到一个问题，就是每次在新的计算机上同步下来的子模块都会显示detached HEAD，原因和解决方法可以参照<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">这个stackoverflow问答</a>里面用户Simba和deltacrux的回答。简而言之，就是在同步完子模块发现detached HEAD之后，手动把每个子模块checkout到各自的master brunch。也可以用一句命令递归完成这一步骤：</p>
+
 <p><code>git submodule foreach --recursive git checkout master</code></p>
+
 <p>下面，我把上面两个网页中的内容粘贴过来备忘。</p>
-<hr>
+
+<hr />
+
 <h1 id="git-submodule-子模块的管理和使用">Git submodule 子模块的管理和使用</h1>
+
 <p>作者：Maonx</p>
-<p>链接：https://www.jianshu.com/p/9000cd49822c</p>
+
+<p>链接：<a href="https://www.jianshu.com/p/9000cd49822c">https://www.jianshu.com/p/9000cd49822c</a></p>
+
 <h2 id="使用前提">使用前提</h2>
+
 <p>经常碰到这种情况：当你在一个Git 项目上工作时，你需要在其中使用另外一个Git 项目。也许它是一个第三方开发的Git 库或者是你独立开发和并在多个父项目中使用的。这个情况下一个常见的问题产生了：你想将两个项目单独处理但是又需要在其中一个中使用另外一个。</p>
+
 <p>在Git 中你可以用子模块<code>submodule</code>来管理这些项目，<code>submodule</code>允许你将一个Git仓库当作另外一个Git仓库的子目录。这允许你克隆另外一个仓库到你的项目中并且保持你的提交相对独立。</p>
+
 <h2 id="添加子模块">添加子模块</h2>
+
 <p>此文中统一将远程项目<code>https://github.com/maonx/vimwiki-assets.git</code>克隆到本地<code>assets</code>文件夹。</p>
+
 <pre><code>$ git submodule add https://github.com/maonx/vimwiki-assets.git assets
 </code></pre>
+
 <p>添加子模块后运行<code>git status</code>, 可以看到目录有增加1个文件<code>.gitmodules</code>, 这个文件用来保存子模块的信息。</p>
+
 <pre><code>$ git status
 On branch master
 
@@ -126,46 +142,61 @@ Changes to be committed:
     new file:   .gitmodules
     new file:   assets
 </code></pre>
+
 <h2 id="查看子模块">查看子模块</h2>
+
 <pre><code>$ git submodule
  e33f854d3f51f5ebd771a68da05ad0371a3c0570 assets (heads/master)
 </code></pre>
+
 <h2 id="更新子模块">更新子模块</h2>
+
 <ol>
-<li>更新项目内子模块到最新版本</li>
-</ol>
+<li><p>更新项目内子模块到最新版本</p>
+
 <pre><code>$ git submodule update
-</code></pre>
-<ol start="2">
-<li>更新子模块为远程项目的最新版本</li>
-</ol>
+</code></pre></li>
+
+<li><p>更新子模块为远程项目的最新版本</p>
+
 <pre><code>$ git submodule update --remote
-</code></pre>
+</code></pre></li>
+</ol>
+
 <h2 id="克隆包含子模块的项目">克隆包含子模块的项目</h2>
+
 <p>克隆包含子模块的项目有二种方法：一种是先克隆父项目，再更新子模块；另一种是直接递归克隆整个项目。</p>
-<h3 id="克隆父项目再更新子模块">克隆父项目，再更新子模块</h3>
+
+<h3 id="克隆父项目-再更新子模块">克隆父项目，再更新子模块</h3>
+
 <ol>
-<li>克隆父项目</li>
-</ol>
+<li><p>克隆父项目</p>
+
 <pre><code>$ git clone https://github.com/maonx/vimwiki-assets.git assets
-</code></pre>
-<ol start="2">
-<li>查看子模块</li>
-</ol>
+</code></pre></li>
+
+<li><p>查看子模块</p>
+
 <pre><code>$ git submodule
- -e33f854d3f51f5ebd771a68da05ad0371a3c0570 assets
-</code></pre>
-<p>子模块前面有一个-，说明子模块文件还未检入（空文件夹）。</p>
-<ol start="3">
-<li>初始化子模块</li>
+-e33f854d3f51f5ebd771a68da05ad0371a3c0570 assets
+</code></pre></li>
 </ol>
+
+<p>子模块前面有一个-，说明子模块文件还未检入（空文件夹）。</p>
+
+<ol>
+<li><p>初始化子模块</p>
+
 <pre><code>$ git submodule init
 Submodule 'assets' (https://github.com/maonx/vimwiki-assets.git) registered for path 'assets'
-</code></pre>
-<p>初始化模块只需在克隆父项目后运行一次。</p>
-<ol start="4">
-<li>更新子模块</li>
+</code></pre></li>
 </ol>
+
+<p>初始化模块只需在克隆父项目后运行一次。</p>
+
+<ol>
+<li><p>更新子模块</p>
+
 <pre><code>$ git submodule update
 Cloning into 'assets'...
 remote: Counting objects: 151, done.
@@ -175,50 +206,68 @@ Receiving objects: 100% (151/151), 1.34 MiB | 569.00 KiB/s, done.
 Resolving deltas: 100% (36/36), done.
 Checking connectivity... done.
 Submodule path 'assets': checked out 'e33f854d3f51f5ebd771a68da05ad0371a3c0570'
-</code></pre>
+</code></pre></li>
+</ol>
+
 <h3 id="递归克隆整个项目">递归克隆整个项目</h3>
+
 <pre><code>git clone https://github.com/maonx/vimwiki-assets.git assets --recursive 
 </code></pre>
+
 <p>递归克隆整个项目，子模块已经同时更新了，一步到位。</p>
+
 <h2 id="修改子模块">修改子模块</h2>
+
 <p>在子模块中修改文件后，直接提交到远程项目分支。</p>
+
 <pre><code>$ git add .
 $ git ci -m &quot;commit&quot;
 $ git push origin HEAD:master
 </code></pre>
+
 <h2 id="删除子模块">删除子模块</h2>
+
 <p>删除子模块比较麻烦，需要手动删除相关的文件，否则在添加子模块时有可能出现错误</p>
+
 <p>同样以删除assets文件夹为例</p>
+
 <ol>
-<li>删除子模块文件夹</li>
-</ol>
+<li><p>删除子模块文件夹</p>
+
 <pre><code>$ git rm --cached assets
 $ rm -rf assets
-</code></pre>
-<ol start="2">
-<li>删除.gitmodules文件中相关子模块信息</li>
-</ol>
+</code></pre></li>
+
+<li><p>删除.gitmodules文件中相关子模块信息</p>
+
 <pre><code>[submodule &quot;assets&quot;]
-  path = assets
-  url = https://github.com/maonx/vimwiki-assets.git
-</code></pre>
-<ol start="3">
-<li>删除.git/config中的相关子模块信息</li>
-</ol>
+path = assets
+url = https://github.com/maonx/vimwiki-assets.git
+</code></pre></li>
+
+<li><p>删除.git/config中的相关子模块信息</p>
+
 <pre><code>[submodule &quot;assets&quot;]
-  url = https://github.com/maonx/vimwiki-assets.git
-</code></pre>
-<ol start="4">
-<li>删除.git文件夹中的相关子模块文件</li>
-</ol>
+url = https://github.com/maonx/vimwiki-assets.git
+</code></pre></li>
+
+<li><p>删除.git文件夹中的相关子模块文件</p>
+
 <pre><code>$ rm -rf .git/modules/assets
-</code></pre>
+</code></pre></li>
+</ol>
+
 <h1 id="解决submodule-detached-head问题">解决submodule detached HEAD问题</h1>
+
 <p>来源：<a href="https://stackoverflow.com/questions/18770545/why-is-my-git-submodule-head-detached-from-master">StackOverflow问答</a></p>
+
 <p>If your submodule has been detached already, fix the detached state before you do an update with the above commands. cd into the submodule, checkout the submodule to a specific branch with, <code>git checkout master</code>. – Simba Sep 4 &lsquo;19 at 7:28</p>
+
 <p>Or - if this is too much of a hassle for multiple (recursive) submodules - simply do <code>git submodule foreach --recursive git checkout master</code>. – stefanct</p>
-<p>As other people have said, the reason this happens is that the parent repo only contains a reference to (the SHA1 of) a specific commit in the submodule – it doesn't know anything about branches. This is how it should work: the branch that was at that commit may have moved forward (or backwards), and if the parent repo had referenced the branch then it could easily break when that happens. - deltacrux</p>
-<p>However, especially if you are actively developing in both the parent repo and the submodule, detached HEAD state can be confusing and potentially dangerous. If you make commits in the submodule while it's in detached HEAD state, these become dangling and you can easily lose your work. (Dangling commits can usually be rescued using git reflog, but it's much better to avoid them in the first place.) - deltacrux</p>
+
+<p>As other people have said, the reason this happens is that the parent repo only contains a reference to (the SHA1 of) a specific commit in the submodule – it doesn&rsquo;t know anything about branches. This is how it should work: the branch that was at that commit may have moved forward (or backwards), and if the parent repo had referenced the branch then it could easily break when that happens. - deltacrux</p>
+
+<p>However, especially if you are actively developing in both the parent repo and the submodule, detached HEAD state can be confusing and potentially dangerous. If you make commits in the submodule while it&rsquo;s in detached HEAD state, these become dangling and you can easily lose your work. (Dangling commits can usually be rescued using git reflog, but it&rsquo;s much better to avoid them in the first place.) - deltacrux</p>
 
 </main>
 
