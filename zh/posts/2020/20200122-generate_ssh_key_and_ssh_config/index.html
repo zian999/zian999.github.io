@@ -75,6 +75,7 @@
 
 
 <br/><nav id="TableOfContents">
+<<<<<<< HEAD
   <ul>
     <li><a href="#github-ssh-key生成免密登录服务器方法">Github ssh key生成，免密登录服务器方法</a>
       <ul>
@@ -108,34 +109,83 @@
       </ul>
     </li>
   </ul>
+=======
+<ul>
+<li><a href="#github-ssh-key生成-免密登录服务器方法">Github ssh key生成，免密登录服务器方法</a>
+<ul>
+<li><a href="#生成sshkey">生成sshkey</a>
+<ul>
+<li><a href="#我的补充">我的补充</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#ssh-config-那些你所知道和不知道的事">SSH Config 那些你所知道和不知道的事</a>
+<ul>
+<li><a href="#配置项说明">配置项说明</a>
+<ul>
+<li><a href="#我的补充-1">我的补充</a></li>
+</ul></li>
+<li><a href="#相关技巧">相关技巧</a>
+<ul>
+<li><a href="#管理多组密钥对">管理多组密钥对</a></li>
+<li><a href="#vim-访问远程文件">vim 访问远程文件</a></li>
+<li><a href="#远程服务当本地用">远程服务当本地用</a></li>
+<li><a href="#多连接共享">多连接共享</a></li>
+<li><a href="#禁用密码登录">禁用密码登录</a></li>
+<li><a href="#关键词登录">关键词登录</a></li>
+<li><a href="#代理登录">代理登录</a></li>
+<li><a href="#远程执行命令">远程执行命令</a></li>
+</ul></li>
+<li><a href="#参考文档">参考文档</a></li>
+</ul></li>
+</ul>
+>>>>>>> 2d2a4b50a5ea9f2bca41aba56e6562f4d849462e
 </nav><br/>
 
 
 <main>
+
+
 <p>在MacBook上每次git push都要输入Github的用户名和密码十分麻烦。可以使用SSH来做到免输密码，而且学会了之后还可以用SSH登录其他网站。（好像也可以通过将Github密码缓存在Git中做到免输密码，具体可以看这个<a href="https://help.github.com/en/github/using-git/caching-your-github-password-in-git">帮助文档</a>）</p>
+
 <p>主要参考的网页有<a href="https://deepzz.com/post/github-generate-ssh-key.html">Deepzz的文章1</a>和<a href="https://deepzz.com/post/how-to-setup-ssh-config.html">Deepzz的文章2</a>，关于在macOS上将passphrases存在Keychain里的方法，参考<a href="https://help.github.com/en/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">Github的这个帮助文档</a>。</p>
+
 <p>下面，我从上面三个网页把有用的内容粘贴过来备忘。</p>
-<hr>
-<h1 id="github-ssh-key生成免密登录服务器方法">Github ssh key生成，免密登录服务器方法</h1>
+
+<hr />
+
+<h1 id="github-ssh-key生成-免密登录服务器方法">Github ssh key生成，免密登录服务器方法</h1>
+
 <p>作者：Deepzz</p>
-<p>链接：https://deepzz.com/post/github-generate-ssh-key.html</p>
+
+<p>链接：<a href="https://deepzz.com/post/github-generate-ssh-key.html">https://deepzz.com/post/github-generate-ssh-key.html</a></p>
+
 <h2 id="生成sshkey">生成sshkey</h2>
+
 <p>1、查看是否存在ssh key，如果有会列出key的列表</p>
+
 <pre><code class="language-bash">$ ls -al ~/.ssh
 # Lists the files in your .ssh directory, if they exist
 </code></pre>
+
 <p>2、没有，继续创建，下一步</p>
+
 <pre><code class="language-bash">$ ssh-keygen -t ecdsa -b 256 -C &quot;your_email@example.com&quot;
 Generating public/private ecdsa key pair.
 </code></pre>
+
 <p>3、使用默认配置，点击Enter，继续</p>
+
 <pre><code class="language-bash">Enter file in which to save the key (/Users/you/.ssh/id_ecdsa): [Press enter]
 </code></pre>
+
 <p>4、输入密码，可以为空，Enter。(如果有密码，以后每次使用到该key都会要求输入密码)</p>
+
 <pre><code class="language-bash">Enter passphrase (empty for no passphrase): [Type a passphrase]
 Enter same passphrase again: [Type passphrase again]
 </code></pre>
+
 <p>5、到这里，ssh key 创建完成</p>
+
 <pre><code class="language-bash">Your identification has been saved in /Users/you/.ssh/id_ecdsa.
 Your public key has been saved in /Users/you/.ssh/id_ecdsa.pub.
 The key fingerprint is:
@@ -153,66 +203,100 @@ The key's randomart image is:
 |    ooooBo ..=*oo|
 +----[SHA256]-----+
 </code></pre>
+
 <p>6、添加到ssh-agent。首先确定ssh-agent is enabled:</p>
+
 <pre><code class="language-bash"># start the ssh-agent in the background
 $ eval &quot;$(ssh-agent -s)&quot;
 Agent pid 59566
 </code></pre>
+
 <p>7、添加</p>
+
 <pre><code class="language-bash">$ ssh-add ~/.ssh/id_ecdsa
 </code></pre>
+
 <p>8、说明 id_ecdsa是私钥，id_ecdsa.pub是公钥。私钥是不能外泄的，我们需要用到的是公钥。 读取到公钥的内容，你就可以在github添加key了。</p>
+
 <h3 id="我的补充">我的补充</h3>
+
 <p>在上面的第四步中，一般还是推荐要设置passphrase。这样虽然在之后的使用中每次连接都会要求输入passphrase，但是安全更有保障，不用太担心万一私钥丢失被别人随意使用。如果使用的是macOS，可以通过配置SSH的config文件将passphrase存储到自己的Keychain里。具体方法见后面一篇文章的我的补充。</p>
+
 <h1 id="ssh-config-那些你所知道和不知道的事">SSH Config 那些你所知道和不知道的事</h1>
+
 <p>作者：Deepzz</p>
-<p>链接：https://deepzz.com/post/how-to-setup-ssh-config.html</p>
+
+<p>链接：<a href="https://deepzz.com/post/how-to-setup-ssh-config.html">https://deepzz.com/post/how-to-setup-ssh-config.html</a></p>
+
 <p>SSH（Secure Shell）是什么？是一项创建在应用层和传输层基础上的安全协议，为计算机上的 Shell（壳层）提供安全的传输和使用环境。也是专为远程登录会话和其他网络服务提供安全性的协议。它能够有效防止远程管理过程中的信息泄露问题。通过 SSH 可以对所有传输的数据进行加密，也能够防止 DNS 欺骗和 IP 欺骗。</p>
+
 <p>具体生成SSH Key方式请参考：<a href="https://deepzz.com/post/github-generate-ssh-key.html">Github ssh key生成，免密登录服务器方法</a>。这里以<code>id_ecdsa</code>（私钥） 和<code>id_ecdsa.pub</code>（公钥） 为例。</p>
+
 <p>本篇文章主要介绍 SSH 相关的使用技巧。通过对<code>~/.ssh/config</code>文件的配置你可以大大简化 SSH 相关的操作，如：</p>
+
 <pre><code class="language-bash">Host example                       # 关键词
     HostName example.com           # 主机地址
     User root                      # 用户名
     # IdentityFile ~/.ssh/id_ecdsa # 认证文件
     # Port 22                      # 指定端口
 </code></pre>
+
 <p>通过执行<code>$ ssh example</code>我就可以登录我的服务器。而不需要敲更多的命令<code>$ ssh root@example.com</code>。又如我们想要向服务器传文件<code>$ scp a.txt example:/home/user_name</code>。比以前方便多了。</p>
+
 <p>更过相关帮助文档请参考<code>$ man ssh_config 5</code>。</p>
+
 <h2 id="配置项说明">配置项说明</h2>
+
 <p>SSH 的配置文件有两个：</p>
+
 <pre><code class="language-bash">$ ~/.ssh/config            # 用户配置文件
 $ /etc/ssh/ssh_config      # 系统配置文件
 </code></pre>
+
 <p>下面来看看常用的配置参数。</p>
+
 <p><strong>Host</strong>：
 用于我们执行 SSH 命令的时候如何匹配到该配置。</p>
+
 <ul>
 <li><code>*</code>，匹配所有主机名。</li>
 <li><code>*.example.com</code>，匹配以 .example.com 结尾。</li>
 <li><code>!*.dialup.example.com,*.example.com</code>，以 ! 开头是排除的意思。</li>
 <li><code>192.168.0.?</code>，匹配 192.168.0.[0-9] 的 IP。</li>
 </ul>
+
 <p><strong>AddKeysToAgent</strong>：
 是否自动将 key 加入到 <code>ssh-agent</code>，值可以为 no(default)/confirm/ask/yes。</p>
+
 <p>如果是 yes，key 和密码都将读取文件并以加入到 agent ，就像 ssh-add。其他分别是询问、确认、不加入的意思。添加到 ssh-agent 意味着将私钥和密码交给它管理，让它来进行身份认证。</p>
+
 <p><strong>AddressFamily</strong>：
 指定连接的时候使用的地址族，值可以为 any(default)/inet(IPv4)/inet6(IPv6)。</p>
+
 <p><strong>BindAddress</strong>：
 指定连接的时候使用的本地主机地址，只在系统有多个地址的时候有用。在 UsePrivilegedPort 值为 yes 的时候无效。</p>
+
 <p><strong>ChallengeResponseAuthentication</strong>：
 是否响应支持的身份验证 chanllenge，yes(default)/no。</p>
+
 <p><strong>Compression</strong>：
 是否压缩，值可以为 no(default)/yes。</p>
+
 <p><strong>CompressionLevel</strong>：
 压缩等级，值可以为 1(fast)-9(slow)。6(default)，相当于 gzip。</p>
+
 <p><strong>ConnectionAttempts</strong>：
 退出前尝试连接的次数，值必须为整数，1(default)。</p>
+
 <p><strong>ConnectTimeout</strong>：
 连接 SSH 服务器超时时间，单位 s，默认系统 TCP 超时时间。</p>
+
 <p><strong>ControlMaster</strong>：
 是否开启单一网络共享多个 session，值可以为 no(default)/yes/ask/auto。需要和 ControlPath 配合使用，当值为 yes 时，ssh 会监听该路径下的 control socket，多个 session 会去连接该 socket，它们会尽可能的复用该网络连接而不是重新建立新的。</p>
+
 <p><strong>ControlPath</strong>：
 指定 control socket 的路径，值可以直接指定也可以用一下参数代替：</p>
+
 <pre><code>%L 本地主机名的第一个组件
 %l 本地主机名（包括域名）
 %h 远程主机名（命令行输入）
@@ -223,39 +307,56 @@ $ /etc/ssh/ssh_config      # 系统配置文件
 %i 本地 ssh 正在使用 uid
 %C 值为 %l%h%p%r 的 hash
 </code></pre>
+
 <p>请最大限度的保持 ControlPath 的唯一。至少包含 %h，%p，%r（或者 %C）。</p>
+
 <p><strong>ControlPersist</strong>：
 结合 ControlMaster 使用，指定连接打开后后台保持的时间。值可以为 no/yes/整数，单位 s。如果为 no，最初的客户端关闭就关闭。如果 yes/0，无限期的，直到杀死或通过其它机制，如：ssh -O exit。</p>
+
 <p><strong>GatewayPorts</strong>：
 指定是否允许远程主机连接到本地转发端口，值可以为 no(default)/yes。默认情况，ssh 为本地回环地址绑定了端口转发器。</p>
+
 <p><strong>HostName</strong>：
 真实的主机名，默认值为命令行输入的值（允许 IP）。你也可以使用 %h，它将自动替换，只要替换后的地址是完整的就 ok。</p>
+
 <p><strong>IdentitiesOnly</strong>：
 指定 ssh 只能使用配置文件指定的 identity 和 certificate 文件或通过 ssh 命令行通过身份验证，即使 ssh-agent 或 PKCS11Provider 提供了多个 identities。值可以为 no(default)/yes。</p>
+
 <p><strong>IdentityFile</strong>：
 指定读取的认证文件路径，允许 DSA，ECDSA，Ed25519 或 RSA。值可以直接指定也可以用一下参数代替：</p>
+
 <pre><code>%d，本地用户目录 ~
 %u，本地用户
 %l，本地主机名
 %h，远程主机名
 %r，远程用户名
 </code></pre>
+
 <p><strong>LocalCommand</strong>：
 指定在连接成功后，本地主机执行的命令（单纯的本地命令）。可使用 %d，%h，%l，%n，%p，%r，%u，%C 替换部分参数。只在 PermitLocalCommand 开启的情况下有效。</p>
+
 <p><strong>LocalForward</strong>：
 指定本地主机的端口通过 ssh 转发到指定远程主机。格式：LocalForward [bind_address:]post host:hostport，支持 IPv6。</p>
+
 <p><strong>PasswordAuthentication</strong>：
 是否使用密码进行身份验证，yes(default)/no。</p>
+
 <p><strong>PermitLocalCommand</strong>：
 是否允许指定 LocalCommand，值可以为 no(default)/yes。</p>
+
 <p><strong>Port</strong>：
 指定连接远程主机的哪个端口，22(default)。</p>
+
 <p><strong>ProxyCommand</strong>：
 指定连接的服务器需要执行的命令。%h，%p，%r</p>
+
 <p>如：ProxyCommand /usr/bin/nc -X connect -x 192.0.2.0:8080 %h %p</p>
+
 <p><strong>User</strong>：
 登录用户名</p>
+
 <h3 id="我的补充-1">我的补充</h3>
+
 <p>如前面所说，macOS用户可以不用每次都输入passphrase。只需在<code>~/.ssh/config</code>文件中的<code>Host *</code>项下面加入<code>UseKeychain yes</code>，即可将passphrase存入自己的苹果Keychain里。</p>
 <h2 id="相关技巧">相关技巧</h2>
 <h3 id="管理多组密钥对">管理多组密钥对</h3>
@@ -366,6 +467,163 @@ data
 <h2 id="参考文档">参考文档</h2>
 <p>[1] <a href="https://www.freebsd.org/cgi/man.cgi?query=ssh_config">https://www.freebsd.org/cgi/man.cgi?query=ssh_config</a></p>
 <p>[2] <a href="https://zh.wikipedia.org/wiki/Secure_Shell">https://zh.wikipedia.org/wiki/Secure_Shell</a></p>
+<p>[3] <a href="http://wowubuntu.com/ssh-tips.html">http://wowubuntu.com/ssh-tips.html</a></p>
+
+<h2 id="相关技巧">相关技巧</h2>
+
+<h3 id="管理多组密钥对">管理多组密钥对</h3>
+
+<p>有时候你会针对多个服务器有不同的密钥对，每次通过指定<code>-i1</code>参数也是非常的不方便。比如你使用github和coding。那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+
+<pre><code>Host github
+    HostName %h.com
+    IdentityFile ~/.ssh/id_ecdsa_github
+    User git
+Host coding
+    HostName git.coding.net
+    IdentityFile ~/.ssh/id_rsa_coding
+    User git
+</code></pre>
+
+<p>当你克隆 coding 上的某个仓库时：</p>
+
+<pre><code class="language-bash"># 原来
+$ git clone git@git.coding.net:deepzz/test.git
+
+# 现在
+$ git clone coding:deepzz/test.git
+</code></pre>
+
+<h3 id="vim-访问远程文件">vim 访问远程文件</h3>
+
+<p>vim 可以直接编辑远程服务器上的文件：</p>
+
+<pre><code class="language-bash">$ vim scp://root@example.com//home/centos/docker-compose.yml
+$ vim scp://example//home/centos/docker-compose.yml
+</code></pre>
+
+<h3 id="远程服务当本地用">远程服务当本地用</h3>
+
+<p>通过 LocalForward 将本地端口上的数据流量通过 ssh 转发到远程主机的指定端口。感觉你是使用的本地服务，其实你使用的远程服务。如远程服务器上运行着 Postgres，端口 5432（未暴露端口给外部）。那么，你可以：</p>
+
+<pre><code>Host db
+    HostName db.example.com
+    LocalForward 5433 localhost:5432
+</code></pre>
+
+<p>当你连接远程主机时，它会在本地打开一个 5433 端口，并将该端口的流量通过 ssh 转发到远程服务器上的 5432 端口。</p>
+
+<p>首先，建立连接：</p>
+
+<pre><code class="language-bash">$ ssh db
+</code></pre>
+
+<p>之后，就可以通过 Postgres 客户端连接本地 5433 端口：</p>
+
+<pre><code class="language-bash">$ psql -h localhost -p 5433 orders
+</code></pre>
+
+<h3 id="多连接共享">多连接共享</h3>
+
+<p>什么是多连接共享？在你打开多个 shell 窗口时需要连接同一台服务器，如果你不想每次都输入用户名，密码，或是等待连接建立，那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+
+<pre><code>ControlMaster auto
+ControlPath /tmp/%r@%h:%p
+</code></pre>
+
+<h3 id="禁用密码登录">禁用密码登录</h3>
+
+<p>如果你对服务器安全要求很高，那么禁用密码登录是必须的。因为使用密码登录服务器容易受到暴力破解的攻击，有一定的安全隐患。那么你需要编辑服务器的系统配置文件<code>/etc/ssh/sshd_config</code>：</p>
+
+<pre><code>PasswordAuthentication no
+ChallengeResponseAuthentication no
+</code></pre>
+
+<h3 id="关键词登录">关键词登录</h3>
+
+<p>为了更方便的登录服务器，我们也可以省略用户名和主机名，采用关键词登录。那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+
+<pre><code>Host deepzz                        # 别名
+    HostName deepzz.com            # 主机地址
+    User root                      # 用户名
+    # IdentityFile ~/.ssh/id_ecdsa # 认证文件
+    # Port 22                      # 指定端口
+</code></pre>
+
+<p>那么使用<code>$ ssh deepzz</code>就可以直接登录服务器了。</p>
+
+<h3 id="代理登录">代理登录</h3>
+
+<p>有的时候你可能没法直接登录到某台服务器，而需要使用一台中间服务器进行中转，如公司内网服务器。首先确保你已经为服务器配置了公钥访问，并开启了agent forwarding，那么你需要添加如下配置到<code>~/.ssh/config</code>：</p>
+
+<pre><code>Host gateway
+    HostName proxy.example.com
+    User root
+Host db
+    HostName db.internal.example.com                  # 目标服务器地址
+    User root                                         # 用户名
+    # IdentityFile ~/.ssh/id_ecdsa                    # 认证文件
+    ProxyCommand ssh gateway netcat -q 600 %h %p      # 代理命令
+</code></pre>
+
+<p>那么你现在可以使用<code>$ ssh db</code>连接了。</p>
+
+<h3 id="远程执行命令">远程执行命令</h3>
+
+<p>日常情况我们需要到服务器上去执行一些命令或拷贝文件，本来是很简单的一件事情，但做得多了就比较繁琐了。通过 SSH 帮我们远程执行相关命令或脚本，非常棒。</p>
+
+<p>如有不了解的知识点，请阅读前面。利用 SSH 来帮我们在本地执行命令：</p>
+
+<p>1、执行远程命令：</p>
+
+<pre><code class="language-bash">$ ssh example &quot;cd /; ls&quot;
+bin
+boot
+data
+...
+</code></pre>
+
+<p>2、执行多行命令：</p>
+
+<pre><code class="language-bash">$ ssh example &quot;
+dquote&gt; cd / 
+dquote&gt; ls
+dquote&gt; &quot;
+bin
+boot
+data
+...
+</code></pre>
+
+<p>3、执行本地脚本</p>
+
+<p>有时候，我们会将经常用到命令，如将一个复杂命令写入到一个 shell 脚本中，但又不想拷贝到服务器上，那么：</p>
+
+<pre><code class="language-bash"># 示例脚本
+$ echo &quot;cd /; ls&quot; &gt; test.sh
+# 为脚本添加可执行权限
+$ chmod +x test.sh
+
+# 远程执行本地脚本
+$ ssh example &lt; test.sh
+Pseudo-terminal will not be allocated because stdin is not a terminal.
+bin
+boot
+data
+...
+</code></pre>
+
+<p>4、执行需要交互的命令</p>
+
+<pre><code class="language-bash">ssh -t example &quot;top&quot;
+</code></pre>
+
+<h2 id="参考文档">参考文档</h2>
+
+<p>[1] <a href="https://www.freebsd.org/cgi/man.cgi?query=ssh_config">https://www.freebsd.org/cgi/man.cgi?query=ssh_config</a></p>
+
+<p>[2] <a href="https://zh.wikipedia.org/wiki/Secure_Shell">https://zh.wikipedia.org/wiki/Secure_Shell</a></p>
+
 <p>[3] <a href="http://wowubuntu.com/ssh-tips.html">http://wowubuntu.com/ssh-tips.html</a></p>
 
 </main>
