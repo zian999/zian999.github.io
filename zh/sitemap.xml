@@ -3,18 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zian999.github.io/zh/tags/github/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zian999.github.io/zh/posts/2020/20200122-generate_ssh_key_and_ssh_config/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+    <loc>https://zian999.github.io/zh/tags/bird/</loc>
+    <lastmod>2021-01-07T13:35:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://zian999.github.io/zh/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+    <lastmod>2021-01-07T13:35:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -29,7 +24,7 @@
   
   <url>
     <loc>https://zian999.github.io/zh/posts/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+    <lastmod>2021-01-07T13:35:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -43,13 +38,8 @@
   </url>
   
   <url>
-    <loc>https://zian999.github.io/zh/tags/ssh/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://zian999.github.io/zh/tags/</loc>
-    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+    <lastmod>2021-01-07T13:35:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -60,6 +50,26 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/zh/posts/2021/20210107-cats-threaten-wildlife-in-china/</loc>
+    <lastmod>2021-01-07T13:35:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/zh/tags/github/</loc>
+    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/zh/posts/2020/20200122-generate_ssh_key_and_ssh_config/</loc>
+    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/zh/tags/ssh/</loc>
+    <lastmod>2020-01-22T10:24:07-05:00</lastmod>
   </url>
   
   <url>

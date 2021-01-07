@@ -3,13 +3,13 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
+    <loc>https://zian999.github.io/tags/apple/</loc>
+    <lastmod>2020-04-02T18:02:00-05:00</lastmod>
   </url>
   
   <url>
     <loc>https://zian999.github.io/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
+    <lastmod>2020-04-02T18:02:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -24,7 +24,7 @@
   
   <url>
     <loc>https://zian999.github.io/posts/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
+    <lastmod>2020-04-02T18:02:00-05:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
@@ -35,6 +35,56 @@
                 hreflang="en"
                 href="https://zian999.github.io/posts/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/posts/2020/20200402-solve_connection_problem_of_smart_keyboard/</loc>
+    <lastmod>2020-04-02T18:02:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/tags/</loc>
+    <lastmod>2020-04-02T18:02:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zian999.github.io/zh/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zian999.github.io/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/tags/darktable/</loc>
+    <lastmod>2020-02-28T21:51:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/tags/photography/</loc>
+    <lastmod>2020-02-28T21:51:00-05:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="zh"
+                href="https://zian999.github.io/zh/tags/photography/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://zian999.github.io/tags/photography/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/posts/2020/20200228-update_local_lensfun_database/</loc>
+    <lastmod>2020-02-28T21:51:00-05:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</loc>
+    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
   </url>
   
   <url>
@@ -58,38 +108,8 @@
   </url>
   
   <url>
-    <loc>https://zian999.github.io/tags/</loc>
-    <lastmod>2019-08-21T19:29:00-04:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zian999.github.io/zh/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zian999.github.io/tags/"
-                />
-  </url>
-  
-  <url>
     <loc>https://zian999.github.io/posts/2019/add_new_lens_profile_to_lr6/</loc>
     <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://zian999.github.io/tags/photography/</loc>
-    <lastmod>2019-06-04T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="zh"
-                href="https://zian999.github.io/zh/tags/photography/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://zian999.github.io/tags/photography/"
-                />
   </url>
   
   <url>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>How to add a new lens profile to (ceased) Lightroom 6 | Nature and Human</title>
+    <title>Update local lensfun database for Darktable | Nature and Human</title>
     <link rel="stylesheet" href="/css/style.css" />
     <link rel="stylesheet" href="/css/fonts.css" />
 
@@ -61,13 +61,13 @@
     <br/>
 
 <div class="article-meta">
-<h1><span class="title">How to add a new lens profile to (ceased) Lightroom 6</span></h1>
+<h1><span class="title">Update local lensfun database for Darktable</span></h1>
 
-<h2 class="date">2019/06/04</h2>
+<h2 class="date">2020/02/28</h2>
 <p class="terms">
   
   
-  Tags: <a href="/tags/photography">photography</a> 
+  Tags: <a href="/tags/photography">photography</a> <a href="/tags/darktable">Darktable</a> 
   
   
 </p>
@@ -76,21 +76,26 @@
 
 
 <main>
-<p>I have purchased a Lightroom 6 license and used the software happily for a long time, until Adobe announced that it was going to discontinue LR in 2017 and launched the <em>Lightroom Classic CC</em> which can only be used with subscription. For now, I don&rsquo;t have any plan to upgrade to LR Classic since I haven&rsquo;t see much benefit in the transfering.</p>
-<p>However, I am planning to buy a new Tamron wide angle lens which is not supported by LR6 (final version 6.13). It means that the lens correction feature is not usable for that lens (and any new lens released after LR6). One solution is to make the lens profile myself using the <a href="https://helpx.adobe.com/photoshop/digital-negative.html#Adobe_Lens_Profile_Creator">Adobe Lens Profile Creator</a>. By the way, there seemed to be an Adobe Lens Profile Downloader, but was also killed by Adobe. Their note writes: As of 1/1/2018, the Adobe Lens Profile Downloader is no longer developed and is unavailable for download. Adobe&rsquo;s development team adds new lens profiles every release.</p>
-<p>Luckily, there&rsquo;s an easier method that allows me to add new lens profiles to the old LR6. According to one answer to <a href="https://forums.adobe.com/thread/2518319">this question in Adobe forum</a>, after installing the DNG converter there&rsquo;s a folder that stores all the lensprofiles. On windows, the location is (e.g.,)</p>
-<pre><code>C:\ProgramData\Adobe\CameraRaw\LensProfiles\1.0\Sigma\Sigma
-</code></pre>
-<p>By copying the lensprofile (a <code>.lcp</code> file) I need to the user folder</p>
-<pre><code>C:\Users\**username**\AppData\Roaming\Adobe\CameraRaw\LensProfiles\1.0\Downloaded
-</code></pre>
-<p>I can use that lensprofile in old version LR.</p>
-<p>For Mac users, this will work too but the locations are different from Windows. According to the answer of <a href="https://forums.adobe.com/thread/2388427">this quesion in Adobe forum</a>, Mac users need to copy <code>.lcp</code> file(s) from (e.g.,)</p>
-<pre><code>/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0/Pentax/[profile you wish to use].lcp
-</code></pre>
-<p>to the user folder</p>
-<pre><code>/Users/[your user name]/Library/Application Support/Adobe/CameraRaw/LensProfiles/1.0
-</code></pre>
+<p><strong>I just give up using Lightroom.</strong></p>
+<p>Because I had to reinstall my system after Christmas, so I choose to try and install Manjaro along with the OEM Windows10. Taking this opportunity, I spent some time transfered all my photo collections from Lightroom 6 to Darktable.</p>
+<p>The darktable used Lensfun library to perform lens correction. Lensfun have collected a lot of lens and camera data. By now (2020-02-28) there&rsquo;re 1057 lenses in the database, and all the popular cameras are covered. The coverage can be checked <a href="https://wilson.bronger.org/lensfun_coverage.html">here</a> or in <a href="https://github.com/lensfun/lensfun">Lensfun project Github page</a>. If the lens one use is not in the database now, one can choose to contribute to project by taking and uploading some photos to create calilbration data. There&rsquo;s a good tutorial <a href="https://pixls.us/articles/create-lens-calibration-data-for-lensfun/">here</a>.</p>
+<p>I&rsquo;m running the newest version of Darktable, and the version of Lensfun in my system (manjaro) is also newset. However, I can&rsquo;t find my lens in the Lens Correction module, although it&rsquo;s in the coverage list. According to <a href="https://www.dpreview.com/forums/thread/4363674">this post</a> and <a href="https://discuss.pixls.us/t/darktable-lensfun2/12457">this one</a>, it seems that we can update the local Lensfun database manually by the command <code>lensfun-update-data</code>. No parameters are needed. If you want to update the database system-wide, you need to add <code>sudo</code> before the command. After that, my lens appeared in the list.</p>
+<p>&mdash; updated 17:36 March 2nd, 2020 &mdash;</p>
+<p>If you&rsquo;re using Windows, according to the <a href="https://github.com/lensfun/lensfun/issues/963">answer provided by @sarunasb</a>, you just need to:</p>
+<ol>
+<li>
+<p>Downloaded the <code>xml</code> file(s) containing tha cameras or lenses you need from <a href="https://github.com/lensfun/lensfun/tree/master/data/db">Lensfun&rsquo;s database</a>, which has been moved to Github from Sourceforge.</p>
+</li>
+<li>
+<p>Find the Lensfun database files installed in your system with Darktable, which could be <code>C:\Program Files\darktable\share\lensfun\version_1</code>.</p>
+</li>
+<li>
+<p>Update the correction files with the one you just downloaded. I.e., just copy downloaded <code>xml</code> to the local location in step 2 (e.g., <code>C:\Program Files\darktable\share\lensfun\version_1</code>), overwriting existing (needed to confirm admin access prompt).</p>
+</li>
+<li>
+<p>Restarted darktable and the previosuly missing lens became available.</p>
+</li>
+</ol>
 
 </main>
 
