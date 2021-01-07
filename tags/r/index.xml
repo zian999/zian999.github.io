@@ -6,15 +6,19 @@
     <description>Recent content in R on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate><atom:link href="https://zian999.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Aug 2019 19:29:00 -0400</lastBuildDate>
+    
+	<atom:link href="https://zian999.github.io/tags/r/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Get p-values for the fixed effect terms in (g)lmer models</title>
       <link>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</link>
       <pubDate>Wed, 21 Aug 2019 19:29:00 -0400</pubDate>
       
       <guid>https://zian999.github.io/posts/2019/lrt_pvalues_for_glmer/</guid>
-      <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&amp;rsquo;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
-If you use lme4::glmer, you&amp;rsquo;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
+      <description>For some reason (see GLMM faq and here for more detail), the lmer function in the lme4 package doesn&#39;t provide p-values for the coefficients (i.e., whether the betas you got are different from 0 or not).
+If you use lme4::glmer, you&#39;ll find that there are p-values listed in the summary of the model. However, I found two problems of them. First, those p-values are indicating the significance of the coefficients, not testing the effects (i.</description>
     </item>
     
   </channel>
