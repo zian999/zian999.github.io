@@ -8,12 +8,12 @@
     <language>en-us</language>
     <lastBuildDate>Tue, 30 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>A Chinese character tool - transfer to Pinyin and extract radical</title>
+      <title>A Chinese character tool - translate to Pinyin and extract radical</title>
       <link>https://zian999.github.io/posts/2021/20210330-chinese-character-tool/</link>
       <pubDate>Tue, 30 Mar 2021 00:00:00 +0000</pubDate>
       
       <guid>https://zian999.github.io/posts/2021/20210330-chinese-character-tool/</guid>
-      <description>Sometimes I have the need to transfer large amount of Chinese characters to Pinyins and extract the corresponding radicals. Recently I found this js library &amp;lsquo;cnchar&amp;rsquo; which exactly meets my need. Using the library I created this page for convience.</description>
+      <description>Sometimes I have the need to translate large amount of Chinese characters to Pinyins and extract the corresponding radicals. Recently I found this js library &amp;lsquo;cnchar&amp;rsquo; which exactly meets my need. Using the library I created this page for convience.</description>
     </item>
     
     <item>
