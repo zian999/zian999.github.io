@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>character on Nature and Human</title>
+    <link>https://zian999.github.io/zh/tags/character/</link>
+    <description>Recent content in character on Nature and Human</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Thu, 25 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/zh/tags/character/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>汉字工具：显示拼音和部首</title>
+      <link>https://zian999.github.io/zh/posts/2021/20210322-chinese-character-tool/</link>
+      <pubDate>Thu, 25 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://zian999.github.io/zh/posts/2021/20210322-chinese-character-tool/</guid>
+      <description>偶尔有批量提取汉字读音和部首的需求。正巧发现了cnchar这个js库，于是试着在这里弄一个专门的页面，方便使用。</description>
+    </item>
+    
+  </channel>
+</rss>
