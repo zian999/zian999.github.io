@@ -6,7 +6,16 @@
     <description>Recent content in Posts on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 08 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use Lightroom Classic only as a DAM tool for FREE</title>
+      <link>https://zian999.github.io/posts/2021/20210608-use-lightroom-as-dam-for-free/</link>
+      <pubDate>Tue, 08 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://zian999.github.io/posts/2021/20210608-use-lightroom-as-dam-for-free/</guid>
+      <description>TLDR: After your adobe lightroom subscription ends, you still have access to all your local photos, and use all the modules except for the Develop and Map modules. This means you can still import new photos and manage all your photos with Lightroom&amp;rsquo;s tagging, keyword, filter and even quick develop functions, which makes it possible to use LrC as a standalone DAM (digital asset management) software and leave complex editing tasks to other dedicated softwares like GIMP and Capture NX-D.</description>
+    </item>
+    
     <item>
       <title>A Chinese character tool - translate to Pinyin and extract radical</title>
       <link>https://zian999.github.io/posts/2021/20210330-chinese-character-tool/</link>
