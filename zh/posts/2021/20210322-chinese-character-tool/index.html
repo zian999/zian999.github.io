@@ -100,7 +100,7 @@
 
 
 
-<script src="https://cdn.jsdelivr.net/npm/cnchar-all/cnchar.all.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/cnchar-all/cnchar.all.min.js"></script>
 
 <script type="text/javascript">
     const c2py_para = document.getElementById('c2py_output');
@@ -124,41 +124,41 @@
             var py_notone = c2py_texts.spell('low', 'poly', 'array');
             var numtone = c2py_texts.spell('tone', 'low', 'poly', 'array');
 
-            var tone1 = /[āēīōūǖĀĒĪŌŪǕ]/im;
+            var tone1 = /[āēīōūǖĀĒĪŌŪǕ]/im;    
             var tone2 = /[áéíóúǘÁÉÍÓÚǗ]/im;
             var tone3 = /[ǎěǐǒǔǚǍĚǏǑǓǙ]/im;
             var tone4 = /[àèìòùǜÀÈÌÒÙǛ]/im;
 
             for (i=0; i<numtone.length; i++) {
-            if (numtone[i].startsWith('(')) {
-                numtone[i] = numtone[i].replace('(', '').replace(')', '');
-                var poly = numtone[i].split('|');
-                for (j=0; j<poly.length; j++) {
-                    if (tone1.test(poly[j])){
-                        poly[j] = 1;
-                    } else if (tone2.test(poly[j])) {
-                        poly[j] = 2;
-                    } else if (tone3.test(poly[j])) {
-                        poly[j] = 3;
-                    } else if (tone4.test(poly[j])) {
-                        poly[j] = 4;
-                    }else {
-                        poly[j] = 5;
+                if (numtone[i].startsWith('(')) {
+                    numtone[i] = numtone[i].replace('(', '').replace(')', '');
+                    var poly = numtone[i].split('|');
+                    for (j=0; j<poly.length; j++) {
+                        if (tone1.test(poly[j])){
+                            poly[j] = 1;
+                        } else if (tone2.test(poly[j])) {
+                            poly[j] = 2;
+                        } else if (tone3.test(poly[j])) {
+                            poly[j] = 3;
+                        } else if (tone4.test(poly[j])) {
+                            poly[j] = 4;
+                        }else {
+                            poly[j] = 5;
+                        }
                     }
+                    numtone[i] = '('.concat(poly.join('|')).concat(')');
+                } else if (tone1.test(numtone[i])) {
+                    numtone[i] = 1;
+                } else if (tone2.test(numtone[i])) {
+                    numtone[i] = 2;
+                } else if (tone3.test(numtone[i])) {
+                    numtone[i] = 3;
+                } else if (tone4.test(numtone[i])) {
+                    numtone[i] = 4;
+                } else {
+                    numtone[i] = 5;
                 }
-                numtone[i] = '('.concat(poly.join('|')).concat(')');
-            } else if (tone1.test(numtone[i])) {
-                numtone[i] = 1;
-            } else if (tone2.test(numtone[i])) {
-                numtone[i] = 2;
-            } else if (tone3.test(numtone[i])) {
-                numtone[i] = 3;
-            } else if (tone4.test(numtone[i])) {
-                numtone[i] = 4;
-            } else {
-                numtone[i] = 5;
             }
-        }
             c2py_para.innerText = '拼音（带声调符号）：\n'.concat(String(py_tone)).concat('\n\n拼音（无声调符号）：\n').concat(String(py_notone)).concat('\n\n对应的数字声调：\n').concat(String(numtone));
         } else {
             c2py_para.innerText = '有非汉字字符！';
@@ -183,9 +183,13 @@
                 nonchar_count += 1;
             }
         }
-
+        
         if (nonchar_count == 0) {
-            c2rad_para.innerText = '部首：\n'.concat(cnchar.radical(c2rad_texts, 'array'))
+            output = '部首：\n';
+            for (i=0; i<c2rad_texts.length; i++) {
+                output = output.concat(cnchar.radical(c2rad_texts[i])[0].radical).concat(',');
+            }
+            c2rad_para.innerText = output.substring(0, output.length-1);
         } else {
             c2rad_para.innerText = '有非汉字字符！';
         }

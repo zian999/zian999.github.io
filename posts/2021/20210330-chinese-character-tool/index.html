@@ -183,9 +183,13 @@
                 nonchar_count += 1;
             }
         }
-
+        
         if (nonchar_count == 0) {
-            c2rad_para.innerText = 'Radical: \n'.concat(cnchar.radical(c2rad_texts, 'array'))
+            output = 'Radical: \n';
+            for (i=0; i<c2rad_texts.length; i++) {
+                output = output.concat(cnchar.radical(c2rad_texts[i])[0].radical).concat(',');
+            }
+            c2rad_para.innerText = output.substring(0, output.length-1);
         } else {
             c2rad_para.innerText = 'Input contains non-Chinese-character!';
         }
