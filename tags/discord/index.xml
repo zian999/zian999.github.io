@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>discord on Nature and Human</title>
+    <link>https://zian999.github.io/tags/discord/</link>
+    <description>Recent content in discord on Nature and Human</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/tags/discord/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learn to build a Discord bot using Discord.py and host it on Replit (for free)</title>
+      <link>https://zian999.github.io/posts/2022/20220923-build-a-discord-bot-using-discordpy-and-host-it-on-replit-for-free/</link>
+      <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://zian999.github.io/posts/2022/20220923-build-a-discord-bot-using-discordpy-and-host-it-on-replit-for-free/</guid>
+      <description>I made a Discord bot that can check and send the current and future stage information for my Splatoon 3 server. I used Python and the library Discord.py. For hosting the bot, I used Replit.com and did a little trick to make it online 24/7.</description>
+    </item>
+    
+  </channel>
+</rss>

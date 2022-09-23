@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://zian999.github.io/zh/tags/character/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
@@ -15,9 +14,7 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/character/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/chinese/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -30,9 +27,7 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/chinese/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -45,9 +40,7 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -60,9 +53,7 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/posts/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -75,54 +66,34 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2021/20210322-chinese-character-tool/</loc>
     <lastmod>2021-03-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/bird/</loc>
     <lastmod>2021-01-07T13:35:00-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2021/20210107-cats-threaten-wildlife-in-china/</loc>
     <lastmod>2021-01-07T13:35:00-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/github/</loc>
     <lastmod>2020-01-22T10:24:07-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2020/20200122-generate_ssh_key_and_ssh_config/</loc>
     <lastmod>2020-01-22T10:24:07-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/ssh/</loc>
     <lastmod>2020-01-22T10:24:07-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/blog/</loc>
     <lastmod>2020-01-21T16:34:34-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/git/</loc>
     <lastmod>2020-01-21T16:34:34-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2020/20200121-git_submodule_and_deal_with_head_detached/</loc>
     <lastmod>2020-01-21T16:34:34-05:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/psychology/</loc>
     <lastmod>2019-06-25T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -135,14 +106,10 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/psychology/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2019/chinese_legibility_vertical_and_horizontal_arrangement/</loc>
     <lastmod>2019-06-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/tags/photography/</loc>
     <lastmod>2019-05-11T11:20:44-04:00</lastmod>
     <xhtml:link
@@ -155,14 +122,10 @@
                 hreflang="zh"
                 href="https://zian999.github.io/zh/tags/photography/"
                 />
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/posts/2019/buying_camera/</loc>
     <lastmod>2019-05-11T11:20:44-04:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://zian999.github.io/zh/about/</loc>
     <xhtml:link
                 rel="alternate"
@@ -175,5 +138,4 @@
                 href="https://zian999.github.io/zh/about/"
                 />
   </url>
-  
 </urlset>

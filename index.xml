@@ -6,7 +6,16 @@
     <description>Recent content in Home on Nature and Human</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 08 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 23 Sep 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://zian999.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learn to build a Discord bot using Discord.py and host it on Replit (for free)</title>
+      <link>https://zian999.github.io/posts/2022/20220923-build-a-discord-bot-using-discordpy-and-host-it-on-replit-for-free/</link>
+      <pubDate>Fri, 23 Sep 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://zian999.github.io/posts/2022/20220923-build-a-discord-bot-using-discordpy-and-host-it-on-replit-for-free/</guid>
+      <description>I made a Discord bot that can check and send the current and future stage information for my Splatoon 3 server. I used Python and the library Discord.py. For hosting the bot, I used Replit.com and did a little trick to make it online 24/7.</description>
+    </item>
+    
     <item>
       <title>Use Lightroom Classic only as a DAM tool for FREE</title>
       <link>https://zian999.github.io/posts/2021/20210608-use-lightroom-as-dam-for-free/</link>
